@@ -6,6 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1B4332">
+<meta name="description" content="Sikkim Family Trip Planner — March 1-7, 2026. Budget, itinerary & expense tracker.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
 <title>🏔️ Sikkim Family Trip 2026</title>
 <style>
@@ -21,164 +22,229 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
 .container{max-width:480px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-inset-bottom))}
 
-/* Hero */
-.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 50%,var(--primary-lighter) 100%);color:#fff;padding:calc(40px + env(safe-area-inset-top)) 20px 30px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'🏔️';font-size:80px;position:absolute;top:-10px;right:-10px;opacity:0.15}
-.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:30px;background:var(--bg);border-radius:50% 50% 0 0}
-.hero h1{font-size:1.6rem;font-weight:800;margin-bottom:4px;letter-spacing:-0.5px}
-.hero .subtitle{font-size:0.95rem;opacity:0.9;margin-bottom:16px}
-.hero .dates{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);padding:8px 18px;border-radius:30px;font-size:0.85rem;font-weight:600}
-.hero .route{margin-top:12px;font-size:0.8rem;opacity:0.8}
+/* ===== HERO ===== */
+.hero{position:relative;height:380px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,67,50,0.1) 0%,rgba(27,67,50,0.5) 50%,rgba(27,67,50,0.92) 100%)}
+.hero-content{position:relative;z-index:1;text-align:center;color:#fff;padding:0 20px calc(40px + env(safe-area-inset-top));width:100%}
+.hero-content h1{font-size:1.8rem;font-weight:800;letter-spacing:-0.5px;text-shadow:0 2px 20px rgba(0,0,0,0.3);margin-bottom:4px}
+.hero-content .subtitle{font-size:0.95rem;opacity:0.9;margin-bottom:14px;font-weight:500}
+.hero-content .dates{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:8px 20px;border-radius:30px;font-size:0.85rem;font-weight:600;border:1px solid rgba(255,255,255,0.2)}
+.hero-content .route{margin-top:10px;font-size:0.78rem;opacity:0.8;letter-spacing:0.3px}
+.hero-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:2}
+.hero-wave svg{display:block;width:100%}
 
-/* Stats */
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-20px 16px 20px;position:relative;z-index:1}
+/* ===== ABOUT SIKKIM ===== */
+.about{padding:24px 16px 8px;max-width:480px;margin:0 auto}
+.about-title{font-size:1.05rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.about-text{font-size:0.82rem;color:var(--text-light);line-height:1.7;margin-bottom:16px}
+.photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px}
+.photo-grid .photo{border-radius:12px;overflow:hidden;aspect-ratio:1;position:relative}
+.photo-grid .photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s}
+.photo-grid .photo:active img{transform:scale(1.05)}
+.photo-grid .photo .photo-label{position:absolute;bottom:0;left:0;right:0;padding:6px 8px;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;font-size:0.6rem;font-weight:600;text-align:center}
+.highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.highlight{background:var(--card);border-radius:var(--radius-sm);padding:12px;text-align:center;box-shadow:var(--shadow)}
+.highlight .h-emoji{font-size:1.4rem;margin-bottom:4px}
+.highlight .h-title{font-size:0.75rem;font-weight:700;color:var(--primary)}
+.highlight .h-sub{font-size:0.65rem;color:var(--text-muted)}
+
+/* ===== SYNC STATUS ===== */
+.sync-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:6px;font-size:0.7rem;color:var(--text-muted);background:var(--card);border-radius:20px;margin:0 16px 12px;max-width:448px;margin-left:auto;margin-right:auto;box-shadow:var(--shadow)}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:#ccc;transition:background 0.3s}
+.sync-dot.synced{background:#4caf50}
+.sync-dot.syncing{background:var(--accent);animation:pulse 1s infinite}
+.sync-dot.error{background:var(--danger)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 16px 14px;max-width:448px;margin-left:auto;margin-right:auto}
 .stat-card{background:var(--card);border-radius:var(--radius-sm);padding:14px;text-align:center;box-shadow:var(--shadow)}
 .stat-card .num{font-size:1.3rem;font-weight:800;color:var(--primary)}
 .stat-card .label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
 
-/* Tabs */
+/* ===== TABS ===== */
 .tabs{display:flex;gap:4px;margin:0 0 16px;background:var(--card);border-radius:var(--radius-sm);padding:4px;box-shadow:var(--shadow);position:sticky;top:0;z-index:10}
-.tab{flex:1;padding:12px 4px;border:none;background:transparent;font-size:0.72rem;font-weight:600;color:var(--text-muted);border-radius:var(--radius-sm);cursor:pointer;transition:all 0.2s;text-align:center;min-height:44px;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.tab{flex:1;padding:12px 4px;border:none;background:transparent;font-size:0.72rem;font-weight:600;color:var(--text-muted);border-radius:var(--radius-sm);cursor:pointer;transition:all 0.2s;text-align:center;min-height:44px;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .tab.active{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(27,67,50,0.3)}
-.tab:hover:not(.active){background:var(--bg)}
 
-/* Sections */
+/* ===== SECTIONS ===== */
 .section{display:none}
 .section.active{display:block}
 .section-title{font-size:1.1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 
-/* Cards */
-.card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow);transition:transform 0.2s}
+/* ===== CARDS ===== */
+.card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
 
-/* Members */
+/* ===== MEMBERS ===== */
 .member-input{display:flex;gap:8px;margin-bottom:14px}
-.member-input input{flex:1;padding:14px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:16px;outline:none;transition:border 0.2s;-webkit-appearance:none}
+.member-input input{flex:1;padding:14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:16px;outline:none;transition:border 0.2s;-webkit-appearance:none}
 .member-input input:focus{border-color:var(--primary)}
 .member-input button{padding:14px 20px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:600;cursor:pointer;min-height:48px;-webkit-tap-highlight-color:transparent}
 .member{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px}
 .member .name{font-weight:600;display:flex;align-items:center;gap:8px}
-.member .avatar{width:32px;height:32px;border-radius:50%;background:var(--primary-lighter);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
-.member .remove{background:none;border:none;color:var(--danger);font-size:1.2rem;cursor:pointer;padding:4px 8px;border-radius:6px}
-.member .remove:hover{background:rgba(230,57,70,0.1)}
+.member .avatar{width:34px;height:34px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
+.member .remove{background:none;border:none;color:var(--danger);font-size:1.2rem;cursor:pointer;padding:8px;border-radius:8px;min-width:40px;min-height:40px;display:flex;align-items:center;justify-content:center}
 
-/* Budget */
+/* ===== BUDGET ===== */
 .budget-group{margin-bottom:16px}
 .budget-group-title{font-size:0.8rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--border)}
-.budget-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.budget-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0;gap:10px}
 .budget-row:last-child{border:none}
-.budget-row .item{font-size:0.85rem;color:var(--text);flex:1}
+.budget-row .item{font-size:0.85rem;color:var(--text);flex:1;min-width:0}
 .budget-row .item small{display:block;color:var(--text-muted);font-size:0.7rem}
-.budget-row .amount{font-weight:700;color:var(--primary);font-size:0.9rem;text-align:right;min-width:80px}
-.budget-row input{width:100px;padding:10px 10px;border:2px solid var(--border);border-radius:8px;font-size:16px;text-align:right;font-weight:600;outline:none;-webkit-appearance:none;min-height:44px}
+.budget-row .amount{font-weight:700;color:var(--primary);font-size:0.9rem;text-align:right;white-space:nowrap}
+.budget-row input[type=number]{width:100px;padding:10px;border:2px solid var(--border);border-radius:8px;font-size:16px;text-align:right;font-weight:600;outline:none;-webkit-appearance:none;min-height:44px}
 .budget-row input:focus{border-color:var(--primary)}
 .budget-total{display:flex;justify-content:space-between;padding:14px 16px;background:var(--primary);color:#fff;border-radius:var(--radius-sm);margin-top:12px;font-weight:700;font-size:1rem}
-.budget-pp{text-align:center;padding:10px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);margin-top:8px;font-weight:700}
+.budget-pp{text-align:center;padding:12px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);margin-top:8px;font-weight:700;font-size:1.05rem}
 
-/* Itinerary */
-.day-card{border-left:3px solid var(--primary-lighter);padding-left:14px;margin-bottom:16px;position:relative}
+/* ===== ITINERARY ===== */
+.day-card{border-left:3px solid var(--primary-lighter);padding-left:14px;margin-bottom:18px;position:relative}
 .day-card::before{content:'';position:absolute;left:-7px;top:6px;width:11px;height:11px;background:var(--primary);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--primary-lighter)}
 .day-date{font-size:0.7rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
 .day-title{font-size:0.95rem;font-weight:700;margin:2px 0 6px}
-.day-desc{font-size:0.82rem;color:var(--text-light);line-height:1.5}
-.day-tag{display:inline-block;padding:2px 10px;background:var(--bg);border-radius:20px;font-size:0.7rem;color:var(--primary);font-weight:600;margin-top:6px;margin-right:4px}
+.day-desc{font-size:0.82rem;color:var(--text-light);line-height:1.6}
+.day-tag{display:inline-block;padding:3px 10px;background:var(--bg);border-radius:20px;font-size:0.7rem;color:var(--primary);font-weight:600;margin-top:6px;margin-right:4px}
 .day-highlight{background:linear-gradient(135deg,#f0fff4,#e8f5e9);padding:12px;border-radius:var(--radius-sm);margin-top:8px;font-size:0.78rem;border:1px solid #c8e6c9}
+.day-photo{width:100%;border-radius:var(--radius-sm);margin-top:10px;aspect-ratio:16/9;object-fit:cover}
 
-/* Expenses */
+/* ===== EXPENSES ===== */
 .expense-form{margin-bottom:16px}
 .form-row{margin-bottom:10px}
 .form-row label{display:block;font-size:0.75rem;font-weight:600;color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.3px}
 .form-row input,.form-row select{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:16px;outline:none;background:#fff;transition:border 0.2s;-webkit-appearance:none;min-height:48px}
-.form-row select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 12px center #fff;padding-right:32px}
+.form-row select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 14px center #fff;padding-right:36px}
 .form-row input:focus,.form-row select:focus{border-color:var(--primary)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn-add{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.1s}
-.btn-add:active{transform:scale(0.98)}
+.btn-add{width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:700;cursor:pointer;min-height:48px}
 .expense-item{display:flex;align-items:center;gap:10px;padding:12px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px}
-.expense-item .emoji{font-size:1.3rem}
-.expense-item .details{flex:1}
-.expense-item .details .desc{font-weight:600;font-size:0.85rem}
+.expense-item .emoji{font-size:1.3rem;flex-shrink:0}
+.expense-item .details{flex:1;min-width:0}
+.expense-item .details .desc{font-weight:600;font-size:0.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .expense-item .details .meta{font-size:0.7rem;color:var(--text-muted)}
-.expense-item .exp-amount{font-weight:800;color:var(--primary);font-size:0.95rem}
-.expense-item .delete{background:none;border:none;color:var(--danger);font-size:0.8rem;cursor:pointer;padding:4px 8px;border-radius:6px;opacity:0.5}
-.expense-item .delete:hover{opacity:1;background:rgba(230,57,70,0.1)}
+.expense-item .exp-amount{font-weight:800;color:var(--primary);font-size:0.95rem;white-space:nowrap}
+.expense-item .delete{background:none;border:none;color:var(--danger);cursor:pointer;padding:8px;border-radius:8px;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;opacity:0.5;font-size:0.85rem}
+.expense-item .delete:active{opacity:1;background:rgba(230,57,70,0.1)}
 .expense-day-header{font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin:16px 0 8px;padding-bottom:4px;border-bottom:2px dashed var(--border)}
 .no-expenses{text-align:center;padding:30px;color:var(--text-muted);font-size:0.85rem}
 
-/* Summary */
+/* ===== SUMMARY ===== */
 .summary-card{text-align:center;padding:20px;margin-bottom:12px}
 .summary-card .big-num{font-size:2rem;font-weight:800;color:var(--primary)}
 .summary-card .big-label{font-size:0.8rem;color:var(--text-muted)}
 .split-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px}
 .split-item .split-name{font-weight:600;font-size:0.85rem}
-.split-item .split-paid{font-size:0.85rem;color:var(--primary);font-weight:700}
+.split-item .split-paid{font-size:0.85rem;color:var(--primary);font-weight:700;white-space:nowrap}
 .split-item .split-owe{font-size:0.75rem;color:var(--text-muted)}
-.share-btn{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:700;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px}
-.share-btn:active{transform:scale(0.98)}
+.share-btn{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px}
 .share-btn.secondary{background:var(--accent)}
 
-/* Packing */
-.pack-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0;font-size:0.85rem}
-.pack-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary)}
-.pack-item.checked{opacity:0.5;text-decoration:line-through}
-.pack-category{font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;margin:14px 0 6px;letter-spacing:0.5px}
-
-/* Toast */
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--primary);color:#fff;padding:12px 24px;border-radius:30px;font-size:0.85rem;font-weight:600;box-shadow:var(--shadow-lg);transition:transform 0.3s ease;z-index:100;white-space:nowrap}
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--primary);color:#fff;padding:12px 24px;border-radius:30px;font-size:0.85rem;font-weight:600;box-shadow:var(--shadow-lg);transition:transform 0.3s ease;z-index:100;white-space:nowrap;max-width:90vw;text-overflow:ellipsis;overflow:hidden}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-/* Responsive - small phones */
+/* ===== RESPONSIVE ===== */
 @media(max-width:360px){
-  .hero h1{font-size:1.35rem}
-  .hero .subtitle{font-size:0.85rem}
-  .stats{grid-template-columns:1fr 1fr;gap:8px;margin:-20px 12px 16px}
+  .hero{height:300px}
+  .hero-content h1{font-size:1.4rem}
+  .stats{gap:8px;margin:0 12px 12px}
   .stat-card{padding:10px}
   .stat-card .num{font-size:1.1rem}
-  .stat-card .label{font-size:0.6rem}
   .tab{font-size:0.65rem;padding:10px 2px}
-  .budget-row{flex-wrap:wrap;gap:6px}
-  .budget-row .item{min-width:100%}
-  .budget-row .amount,.budget-row input{margin-left:auto}
   .form-grid{grid-template-columns:1fr}
-  .day-tag{font-size:0.65rem;padding:2px 8px}
-  .expense-item{flex-wrap:wrap;gap:8px}
+  .photo-grid{gap:6px}
+  .highlights{gap:6px}
 }
-
-/* Responsive - medium+ */
 @media(min-width:500px){
   .container{padding:0 24px 100px}
-  .hero{padding:50px 30px 40px}
-  .hero h1{font-size:2rem}
+  .hero{height:440px}
+  .hero-content h1{font-size:2.2rem}
 }
 
-/* Touch feedback */
-button,a,.tab,.member,.expense-item{-webkit-tap-highlight-color:transparent}
+/* Touch */
+button,a,.tab{-webkit-tap-highlight-color:transparent}
 button:active,.tab:active{transform:scale(0.97)}
-.btn-add:active{transform:scale(0.98)}
-.share-btn:active{transform:scale(0.98)}
-
-/* Prevent text selection on interactive elements */
 .tab,.member .remove,.delete{-webkit-user-select:none;user-select:none}
-
-/* Smooth scrolling */
 html{scroll-behavior:smooth}
 
-/* Empty state */
 .empty-state{text-align:center;padding:40px 20px;color:var(--text-muted)}
 .empty-state .emoji{font-size:2.5rem;margin-bottom:10px}
+
+/* Loading shimmer */
+.shimmer{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 </style>
 </head>
 <body>
 
-<!-- Hero -->
+<!-- ===== HERO ===== -->
 <div class="hero">
-  <h1>Sikkim Family Trip 🏔️</h1>
-  <p class="subtitle">Mountains are calling & we must go!</p>
-  <div class="dates">📅 March 1 — 7, 2026</div>
-  <p class="route">Patna → NJP → Gangtok → Lachung → Yumthang → Patna</p>
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80" alt="Sikkim Mountains" loading="eager">
+  </div>
+  <div class="hero-content">
+    <h1>Sikkim Family Trip 🏔️</h1>
+    <p class="subtitle">Where mountains meet the sky</p>
+    <div class="dates">📅 March 1 — 7, 2026</div>
+    <p class="route">Patna → NJP → Gangtok → Lachung → Yumthang → Patna</p>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" fill="none"><path d="M0,40 C360,70 720,0 1080,40 C1260,55 1380,45 1440,40 L1440,60 L0,60Z" fill="#F0F4F0"/></svg>
+  </div>
 </div>
 
-<!-- Stats -->
-<div class="stats" id="statsBar">
+<!-- ===== ABOUT SIKKIM ===== -->
+<div class="about" id="aboutSection">
+  <div class="about-title">✨ About the Destination</div>
+  <p class="about-text">
+    Sikkim — a paradise tucked in the northeast Himalayas. Home to the majestic <strong>Kanchenjunga</strong> (world's 3rd highest peak), sacred monasteries, frozen lakes, and the stunning <strong>Yumthang Valley of Flowers</strong>. From the bustling MG Marg in Gangtok to the snow-covered Zero Point at 15,300 ft — this trip takes us through some of India's most breathtaking landscapes. 🌄
+  </p>
+
+  <div class="photo-grid">
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1622397745187-4505c20adfc8?w=300&q=80" alt="Gangtok" loading="lazy">
+      <div class="photo-label">Gangtok</div>
+    </div>
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=300&q=80" alt="Tsomgo Lake" loading="lazy">
+      <div class="photo-label">Tsomgo Lake</div>
+    </div>
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1614512210750-8aab39580399?w=300&q=80" alt="Mountains" loading="lazy">
+      <div class="photo-label">Kanchenjunga</div>
+    </div>
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1633512810647-e93fbf498e2a?w=300&q=80" alt="Monastery" loading="lazy">
+      <div class="photo-label">Monastery</div>
+    </div>
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1626015449887-1eafb3791e67?w=300&q=80" alt="Yumthang" loading="lazy">
+      <div class="photo-label">Yumthang</div>
+    </div>
+    <div class="photo">
+      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=300&q=80" alt="Prayer Flags" loading="lazy">
+      <div class="photo-label">Prayer Flags</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight"><div class="h-emoji">🏔️</div><div class="h-title">15,300 ft</div><div class="h-sub">Zero Point altitude</div></div>
+    <div class="highlight"><div class="h-emoji">📅</div><div class="h-title">7 Days</div><div class="h-sub">March 1-7, 2026</div></div>
+    <div class="highlight"><div class="h-emoji">👨‍👩‍👧‍👦</div><div class="h-title" id="hlMembers">8 People</div><div class="h-sub">Family trip</div></div>
+    <div class="highlight"><div class="h-emoji">🚂</div><div class="h-title">Vande Bharat</div><div class="h-sub">Patna ↔ NJP</div></div>
+  </div>
+</div>
+
+<!-- ===== SYNC STATUS ===== -->
+<div class="sync-bar">
+  <div class="sync-dot" id="syncDot"></div>
+  <span id="syncText">Connecting...</span>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="stats">
   <div class="stat-card"><div class="num" id="statTotal">—</div><div class="label">Total Budget</div></div>
   <div class="stat-card"><div class="num" id="statPP">—</div><div class="label">Per Person</div></div>
   <div class="stat-card"><div class="num" id="statMembers">0</div><div class="label">Members</div></div>
@@ -188,169 +254,130 @@ html{scroll-behavior:smooth}
 <div class="container">
   <!-- Tabs -->
   <div class="tabs">
-    <button class="tab active" onclick="showTab('members')">👥 Team</button>
-    <button class="tab" onclick="showTab('budget')">💰 Budget</button>
-    <button class="tab" onclick="showTab('itinerary')">🗓️ Plan</button>
-    <button class="tab" onclick="showTab('expenses')">🧾 Track</button>
-    <button class="tab" onclick="showTab('summary')">📊 Split</button>
+    <button class="tab active" data-tab="members">👥 Team</button>
+    <button class="tab" data-tab="budget">💰 Budget</button>
+    <button class="tab" data-tab="itinerary">🗓️ Plan</button>
+    <button class="tab" data-tab="expenses">🧾 Track</button>
+    <button class="tab" data-tab="summary">📊 Split</button>
   </div>
 
-  <!-- Members Section -->
+  <!-- ===== MEMBERS ===== -->
   <div class="section active" id="sec-members">
     <div class="section-title">👥 Family Members</div>
     <div class="member-input">
-      <input type="text" id="memberName" placeholder="Add family member name..." maxlength="30" onkeydown="if(event.key==='Enter')addMember()">
+      <input type="text" id="memberName" placeholder="Add family member..." maxlength="30">
       <button onclick="addMember()">Add</button>
     </div>
     <div id="membersList"></div>
   </div>
 
-  <!-- Budget Section -->
+  <!-- ===== BUDGET ===== -->
   <div class="section" id="sec-budget">
     <div class="section-title">💰 Trip Budget</div>
     <div class="card">
       <div class="budget-group">
         <div class="budget-group-title">🚂 Transport</div>
-        <div class="budget-row">
-          <div class="item">Vande Bharat: Patna → NJP<small>₹1,500 × <span class="m-count">8</span> people</small></div>
-          <div class="amount" data-calc="transport-go"></div>
-        </div>
-        <div class="budget-row">
-          <div class="item">Vande Bharat: NJP → Patna<small>₹1,200 × <span class="m-count">8</span> people</small></div>
-          <div class="amount" data-calc="transport-return"></div>
-        </div>
-        <div class="budget-row">
-          <div class="item">Taxi: NJP → Gangtok<small>Shared vehicle</small></div>
-          <div class="amount">₹4,000</div>
-        </div>
-        <div class="budget-row">
-          <div class="item">Taxi: Gangtok → NJP<small>Shared vehicle</small></div>
-          <div class="amount">₹4,000</div>
-        </div>
-        <div class="budget-row">
-          <div class="item">Local Sightseeing Taxis<small>3 days (Tsomgo, Lachung-Yumthang, Local)</small></div>
-          <div class="amount"><input type="number" id="budgetLocalTaxi" value="14000" onchange="calcBudget()"></div>
-        </div>
+        <div class="budget-row"><div class="item">Vande Bharat: Patna → NJP<small>₹1,500 × <span class="m-count">8</span> ppl</small></div><div class="amount" id="calcTrainGo"></div></div>
+        <div class="budget-row"><div class="item">Vande Bharat: NJP → Patna<small>₹1,200 × <span class="m-count">8</span> ppl</small></div><div class="amount" id="calcTrainReturn"></div></div>
+        <div class="budget-row"><div class="item">Taxi: NJP → Gangtok<small>Shared vehicle</small></div><div class="amount">₹4,000</div></div>
+        <div class="budget-row"><div class="item">Taxi: Gangtok → NJP<small>Shared vehicle</small></div><div class="amount">₹4,000</div></div>
+        <div class="budget-row"><div class="item">Local Sightseeing<small>Tsomgo, Lachung-Yumthang, Local</small></div><div class="amount"><input type="number" id="budgetLocalTaxi" value="14000" onchange="onBudgetChange()"></div></div>
       </div>
-
       <div class="budget-group">
         <div class="budget-group-title">🏨 Accommodation</div>
-        <div class="budget-row">
-          <div class="item">Hotels (4 nights)<small>Gangtok + Lachung + NJP</small></div>
-          <div class="amount"><input type="number" id="budgetAccom" value="27500" onchange="calcBudget()"></div>
-        </div>
+        <div class="budget-row"><div class="item">Hotels (4 nights)<small>Gangtok + Lachung + NJP</small></div><div class="amount"><input type="number" id="budgetAccom" value="27500" onchange="onBudgetChange()"></div></div>
       </div>
-
       <div class="budget-group">
         <div class="budget-group-title">🍽️ Food</div>
-        <div class="budget-row">
-          <div class="item">Meals (6 days)<small>₹<span id="foodRate">400</span>/person/day × <span class="m-count">8</span> × 6</small></div>
-          <div class="amount"><input type="number" id="budgetFood" value="19200" onchange="calcBudget()"></div>
-        </div>
+        <div class="budget-row"><div class="item">Meals (6 days)<small>~₹400/person/day × <span class="m-count">8</span> × 6</small></div><div class="amount"><input type="number" id="budgetFood" value="19200" onchange="onBudgetChange()"></div></div>
       </div>
-
       <div class="budget-group">
         <div class="budget-group-title">🎫 Permits & Entry</div>
-        <div class="budget-row">
-          <div class="item">Nathula/Tsomgo permit + entries<small>₹300/person approx</small></div>
-          <div class="amount"><input type="number" id="budgetPermits" value="2500" onchange="calcBudget()"></div>
-        </div>
+        <div class="budget-row"><div class="item">Nathula/Tsomgo + entries<small>~₹300/person</small></div><div class="amount"><input type="number" id="budgetPermits" value="2500" onchange="onBudgetChange()"></div></div>
       </div>
-
       <div class="budget-group">
         <div class="budget-group-title">🎒 Miscellaneous</div>
-        <div class="budget-row">
-          <div class="item">Shopping, tips, snacks, emergency<small>Buffer amount</small></div>
-          <div class="amount"><input type="number" id="budgetMisc" value="5000" onchange="calcBudget()"></div>
-        </div>
+        <div class="budget-row"><div class="item">Shopping, tips, snacks<small>Buffer amount</small></div><div class="amount"><input type="number" id="budgetMisc" value="5000" onchange="onBudgetChange()"></div></div>
       </div>
-
-      <div class="budget-total">
-        <span>Total Estimated</span>
-        <span id="budgetGrandTotal">—</span>
-      </div>
+      <div class="budget-total"><span>Total Estimated</span><span id="budgetGrandTotal">—</span></div>
       <div class="budget-pp" id="budgetPerPerson">—</div>
     </div>
   </div>
 
-  <!-- Itinerary Section -->
+  <!-- ===== ITINERARY ===== -->
   <div class="section" id="sec-itinerary">
     <div class="section-title">🗓️ Day-by-Day Plan</div>
 
     <div class="day-card">
       <div class="day-date">Day 1 · Sun, March 1</div>
       <div class="day-title">🚂 Patna → NJP</div>
-      <div class="day-desc">Board Vande Bharat Express at <strong>13:00</strong> from Patna. Settle in and enjoy the scenic journey through Bihar and Bengal. Carry packed meals for dinner.</div>
+      <div class="day-desc">Board Vande Bharat Express at <strong>13:00</strong> from Patna. Scenic ride through Bihar & Bengal. Carry packed dinner — arrive NJP late evening.</div>
       <div class="day-tag">🚂 Vande Bharat</div><div class="day-tag">🕐 Departs 1 PM</div>
-      <div class="day-highlight">💡 <strong>Tip:</strong> Reach station by 12:15. Keep warm clothes accessible — it gets cold as you head east.</div>
+      <div class="day-highlight">💡 Reach station by 12:15. Keep warm clothes accessible in hand baggage.</div>
     </div>
 
     <div class="day-card">
       <div class="day-date">Day 2 · Mon, March 2</div>
       <div class="day-title">📍 Arrive Gangtok</div>
-      <div class="day-desc">Arrive at NJP early morning. Pre-booked taxi to Gangtok (~4.5 hours through beautiful mountain roads). Check into hotel. Evening stroll at the famous <strong>MG Marg</strong> — shop, eat momos, soak in the vibe.</div>
+      <div class="day-desc">Morning taxi from NJP to Gangtok (~4.5 hrs through winding mountain roads). Check in. Evening stroll at <strong>MG Marg</strong> — momos, thukpa, and shopping!</div>
       <div class="day-tag">🚐 4.5 hr drive</div><div class="day-tag">🌃 MG Marg</div><div class="day-tag">🥟 Momos!</div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1622397745187-4505c20adfc8?w=600&q=75" alt="Gangtok MG Marg" loading="lazy">
     </div>
 
     <div class="day-card">
       <div class="day-date">Day 3 · Tue, March 3</div>
-      <div class="day-title">❄️ Tsomgo Lake & Nathula Pass</div>
-      <div class="day-desc">Full day excursion! Visit the stunning <strong>Tsomgo Lake</strong> (12,310 ft) — frozen in winter, crystal blue in spring. Drive to <strong>Baba Harbhajan Singh Mandir</strong> and if permits allow, <strong>Nathula Pass</strong> (14,140 ft) — the India-China border.</div>
-      <div class="day-tag">📸 Tsomgo Lake</div><div class="day-tag">🛕 Baba Mandir</div><div class="day-tag">🇮🇳 Nathula Pass</div>
-      <div class="day-highlight">💡 <strong>Permits:</strong> Apply through hotel/tour operator on Day 2. Carry ID proof (Aadhaar). Nathula closed on Mondays & Tuesdays — <strong>March 3 is Tuesday!</strong> If closed, do Tsomgo + Baba Mandir + Gangtok sightseeing instead.</div>
+      <div class="day-title">❄️ Tsomgo Lake & Baba Mandir</div>
+      <div class="day-desc">Full day excursion! <strong>Tsomgo Lake</strong> (12,310 ft) — frozen & magical in March. Visit <strong>Baba Harbhajan Singh Mandir</strong>. Try for <strong>Nathula Pass</strong> (India-China border) if open.</div>
+      <div class="day-tag">📸 Tsomgo Lake</div><div class="day-tag">🛕 Baba Mandir</div><div class="day-tag">🇮🇳 Nathula</div>
+      <div class="day-highlight">💡 <strong>Note:</strong> Nathula closed Mon & Tue. March 3 is Tuesday! If closed, do Tsomgo + Baba Mandir + Gangtok sightseeing instead. Apply permits on Day 2.</div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=600&q=75" alt="Tsomgo Lake" loading="lazy">
     </div>
 
     <div class="day-card">
       <div class="day-date">Day 4 · Wed, March 4</div>
       <div class="day-title">🏔️ Gangtok → Lachung</div>
-      <div class="day-desc">Scenic drive to <strong>Lachung</strong> (~5-6 hours). Pass through Chungthang, see the confluence of Lachen & Lachung rivers. Overnight stay in Lachung — a charming mountain village at 8,610 ft.</div>
-      <div class="day-tag">🚗 5-6 hrs</div><div class="day-tag">🏡 Lachung Village</div><div class="day-tag">📸 Scenic Drive</div>
+      <div class="day-desc">Breathtaking 5-6 hour drive through mountain passes. Pass Chungthang, see Lachen-Lachung river confluence. Overnight in <strong>Lachung village</strong> at 8,610 ft.</div>
+      <div class="day-tag">🚗 5-6 hrs</div><div class="day-tag">🏡 Lachung</div><div class="day-tag">📸 Scenic</div>
     </div>
 
     <div class="day-card">
       <div class="day-date">Day 5 · Thu, March 5</div>
-      <div class="day-title">🌸 Yumthang Valley & Zero Point</div>
-      <div class="day-desc">Early morning drive to <strong>Yumthang Valley</strong> — the "Valley of Flowers" (11,800 ft). In March, snow might still cover the valley! Continue to <strong>Zero Point</strong> (Yumesamdong, 15,300 ft) if road is open. Return to Gangtok by evening.</div>
+      <div class="day-title">🌸 Yumthang & Zero Point</div>
+      <div class="day-desc">Early morning to <strong>Yumthang Valley</strong> — "Valley of Flowers" (11,800 ft). Continue to <strong>Zero Point</strong> (15,300 ft) if road is open — pure snow! Return to Gangtok by evening.</div>
       <div class="day-tag">🌺 Yumthang</div><div class="day-tag">❄️ Zero Point</div><div class="day-tag">📸 Snow!</div>
-      <div class="day-highlight">💡 <strong>Note:</strong> Zero Point access depends on weather/snow. Carry gloves, caps, sunscreen. Return drive to Gangtok is 5-6 hrs — long but gorgeous.</div>
+      <div class="day-highlight">💡 Zero Point depends on weather. Carry gloves, caps, sunscreen. Return to Gangtok is 5-6 hrs.</div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1626015449887-1eafb3791e67?w=600&q=75" alt="Yumthang Valley" loading="lazy">
     </div>
 
     <div class="day-card">
       <div class="day-date">Day 6 · Fri, March 6</div>
-      <div class="day-title">🏛️ Gangtok Sightseeing → NJP</div>
-      <div class="day-desc">Morning: Visit <strong>Rumtek Monastery</strong>, <strong>Hanuman Tok</strong>, <strong>Tashi Viewpoint</strong> (Kanchenjunga view!). Last-minute shopping at MG Marg. Afternoon: Drive to NJP (~4.5 hrs). Stay near NJP station for early morning train.</div>
-      <div class="day-tag">🛕 Rumtek</div><div class="day-tag">🛍️ Shopping</div><div class="day-tag">🚐 Drive to NJP</div>
+      <div class="day-title">🏛️ Gangtok → NJP</div>
+      <div class="day-desc">Morning: <strong>Rumtek Monastery</strong>, <strong>Hanuman Tok</strong>, <strong>Tashi Viewpoint</strong> (Kanchenjunga view!). MG Marg shopping. Afternoon drive to NJP, overnight near station.</div>
+      <div class="day-tag">🛕 Rumtek</div><div class="day-tag">🛍️ Shopping</div><div class="day-tag">🚐 NJP</div>
     </div>
 
     <div class="day-card">
       <div class="day-date">Day 7 · Sat, March 7</div>
       <div class="day-title">🏠 NJP → Patna</div>
-      <div class="day-desc">Early morning! Board Vande Bharat at <strong>5:10 AM</strong> from NJP. Relax, share photos, relive memories on the way home. Arrive Patna by afternoon.</div>
+      <div class="day-desc">Board Vande Bharat at <strong>5:10 AM</strong> from NJP. Share trip photos, relive the memories. Arrive Patna by afternoon. 🏠</div>
       <div class="day-tag">🚂 Vande Bharat</div><div class="day-tag">🕐 5:10 AM</div><div class="day-tag">🏠 Home!</div>
-      <div class="day-highlight">💡 <strong>Tip:</strong> Set multiple alarms! Pack bags the night before. Keep breakfast ready.</div>
+      <div class="day-highlight">⚠️ Set multiple alarms! Pack bags the night before. Keep breakfast ready.</div>
     </div>
   </div>
 
-  <!-- Expense Tracker -->
+  <!-- ===== EXPENSES ===== -->
   <div class="section" id="sec-expenses">
     <div class="section-title">🧾 Daily Expenses</div>
     <div class="card expense-form">
-      <div class="form-row">
-        <label>What was it for?</label>
-        <input type="text" id="expDesc" placeholder="e.g. Lunch at MG Marg" maxlength="50">
-      </div>
+      <div class="form-row"><label>What was it for?</label><input type="text" id="expDesc" placeholder="e.g. Lunch at MG Marg" maxlength="50"></div>
       <div class="form-grid">
-        <div class="form-row">
-          <label>Amount (₹)</label>
-          <input type="number" id="expAmount" placeholder="500" min="0">
-        </div>
-        <div class="form-row">
-          <label>Category</label>
+        <div class="form-row"><label>Amount (₹)</label><input type="number" id="expAmount" placeholder="500" min="0" inputmode="numeric"></div>
+        <div class="form-row"><label>Category</label>
           <select id="expCategory">
             <option value="🍽️ Food">🍽️ Food</option>
             <option value="🚗 Transport">🚗 Transport</option>
             <option value="🏨 Stay">🏨 Stay</option>
-            <option value="🎫 Entry/Permit">🎫 Entry/Permit</option>
+            <option value="🎫 Entry/Permit">🎫 Entry</option>
             <option value="🛍️ Shopping">🛍️ Shopping</option>
             <option value="☕ Snacks">☕ Snacks</option>
             <option value="📦 Other">📦 Other</option>
@@ -358,21 +385,15 @@ html{scroll-behavior:smooth}
         </div>
       </div>
       <div class="form-grid">
-        <div class="form-row">
-          <label>Paid By</label>
-          <select id="expPaidBy"><option value="">— Select —</option></select>
-        </div>
-        <div class="form-row">
-          <label>Date</label>
-          <input type="date" id="expDate" value="2026-03-01" min="2026-03-01" max="2026-03-07">
-        </div>
+        <div class="form-row"><label>Paid By</label><select id="expPaidBy"><option value="">— Select —</option></select></div>
+        <div class="form-row"><label>Date</label><input type="date" id="expDate" value="2026-03-01" min="2026-03-01" max="2026-03-07"></div>
       </div>
       <button class="btn-add" onclick="addExpense()">+ Add Expense</button>
     </div>
     <div id="expensesList"></div>
   </div>
 
-  <!-- Summary Section -->
+  <!-- ===== SUMMARY ===== -->
   <div class="section" id="sec-summary">
     <div class="section-title">📊 Expense Summary</div>
     <div class="card summary-card">
@@ -392,35 +413,74 @@ html{scroll-behavior:smooth}
   </div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-// State
-const STORE_KEY = 'sikkim-trip-2026';
-let state = loadState();
+/* ===== SYNC ENGINE (jsonblob.com) ===== */
+const BLOB_ID = '019c1f01-b904-7118-a835-54e14b5c82c4';
+const API = `https://jsonblob.com/api/jsonBlob/${BLOB_ID}`;
+const POLL_MS = 5000;
+let state = { members: [], expenses: [], budgetOverrides: {}, updatedAt: 0 };
+let lastKnownUpdate = 0;
+let syncing = false;
+let pollTimer = null;
 
-function defaultState() {
-  return {
-    members: [],
-    expenses: [],
-    budgetOverrides: {},
-    packChecked: {}
-  };
+function setSyncStatus(status) {
+  const dot = document.getElementById('syncDot');
+  const txt = document.getElementById('syncText');
+  dot.className = 'sync-dot ' + status;
+  txt.textContent = status === 'synced' ? 'All devices synced ✓' :
+                    status === 'syncing' ? 'Syncing...' : 'Offline — retrying...';
 }
 
-function loadState() {
+async function fetchState() {
   try {
-    const s = JSON.parse(localStorage.getItem(STORE_KEY));
-    return s || defaultState();
-  } catch { return defaultState(); }
+    setSyncStatus('syncing');
+    const res = await fetch(API, { headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    if (data.updatedAt > lastKnownUpdate) {
+      state = data;
+      lastKnownUpdate = data.updatedAt;
+      renderAll();
+    }
+    setSyncStatus('synced');
+  } catch (e) {
+    setSyncStatus('error');
+  }
 }
 
-function saveState() {
-  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+async function pushState() {
+  if (syncing) return;
+  syncing = true;
+  state.updatedAt = Date.now();
+  lastKnownUpdate = state.updatedAt;
+  try {
+    setSyncStatus('syncing');
+    const res = await fetch(API, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(state)
+    });
+    if (!res.ok) throw new Error('push failed');
+    setSyncStatus('synced');
+  } catch (e) {
+    setSyncStatus('error');
+  } finally {
+    syncing = false;
+  }
 }
 
-// Members
+function startPolling() {
+  fetchState();
+  pollTimer = setInterval(fetchState, POLL_MS);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { clearInterval(pollTimer); }
+    else { fetchState(); pollTimer = setInterval(fetchState, POLL_MS); }
+  });
+}
+
+/* ===== MEMBERS ===== */
 function addMember() {
   const input = document.getElementById('memberName');
   const name = input.value.trim();
@@ -429,7 +489,7 @@ function addMember() {
   if (state.members.find(m => m.name.toLowerCase() === name.toLowerCase())) return toast('Already added!');
   state.members.push({ id: Date.now().toString(), name });
   input.value = '';
-  saveState();
+  pushState();
   renderAll();
   toast(`${name} added! 🎉`);
 }
@@ -439,7 +499,7 @@ function removeMember(id) {
   if (m && confirm(`Remove ${m.name}?`)) {
     state.members = state.members.filter(x => x.id !== id);
     state.expenses = state.expenses.filter(x => x.paidBy !== id);
-    saveState();
+    pushState();
     renderAll();
   }
 }
@@ -450,7 +510,7 @@ function renderMembers() {
     el.innerHTML = '<div class="empty-state"><div class="emoji">👨‍👩‍👧‍👦</div><div>Add your family members to get started!</div></div>';
     return;
   }
-  const colors = ['#1B4332','#2D6A4F','#40916C','#52B788','#74C69D','#95D5B2','#F77F00','#E63946'];
+  const colors = ['#1B4332','#2D6A4F','#40916C','#52B788','#74C69D','#F77F00','#E63946','#457B9D'];
   el.innerHTML = state.members.map((m, i) => `
     <div class="member">
       <div class="name">
@@ -458,110 +518,89 @@ function renderMembers() {
         ${m.name}
       </div>
       <button class="remove" onclick="removeMember('${m.id}')">✕</button>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-// Budget
+/* ===== BUDGET ===== */
+function onBudgetChange() {
+  state.budgetOverrides = {
+    localTaxi: +document.getElementById('budgetLocalTaxi').value || 0,
+    accom: +document.getElementById('budgetAccom').value || 0,
+    food: +document.getElementById('budgetFood').value || 0,
+    permits: +document.getElementById('budgetPermits').value || 0,
+    misc: +document.getElementById('budgetMisc').value || 0,
+  };
+  calcBudget();
+  pushState();
+}
+
 function calcBudget() {
   const n = state.members.length || 8;
-  const trainGo = 1500 * n;
-  const trainReturn = 1200 * n;
-  const taxiGo = 4000;
-  const taxiReturn = 4000;
-  const localTaxi = parseInt(document.getElementById('budgetLocalTaxi').value) || 0;
-  const accom = parseInt(document.getElementById('budgetAccom').value) || 0;
-  const food = parseInt(document.getElementById('budgetFood').value) || 0;
-  const permits = parseInt(document.getElementById('budgetPermits').value) || 0;
-  const misc = parseInt(document.getElementById('budgetMisc').value) || 0;
-
-  const total = trainGo + trainReturn + taxiGo + taxiReturn + localTaxi + accom + food + permits + misc;
+  const o = state.budgetOverrides || {};
+  const trainGo = 1500 * n, trainRet = 1200 * n;
+  const local = o.localTaxi || 14000, accom = o.accom || 27500;
+  const food = o.food || 19200, permits = o.permits || 2500, misc = o.misc || 5000;
+  const total = trainGo + trainRet + 8000 + local + accom + food + permits + misc;
   const pp = Math.ceil(total / n);
 
   document.querySelectorAll('.m-count').forEach(el => el.textContent = n);
-  document.querySelector('[data-calc="transport-go"]').textContent = `₹${trainGo.toLocaleString('en-IN')}`;
-  document.querySelector('[data-calc="transport-return"]').textContent = `₹${trainReturn.toLocaleString('en-IN')}`;
+  document.getElementById('calcTrainGo').textContent = `₹${trainGo.toLocaleString('en-IN')}`;
+  document.getElementById('calcTrainReturn').textContent = `₹${trainRet.toLocaleString('en-IN')}`;
   document.getElementById('budgetGrandTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
   document.getElementById('budgetPerPerson').textContent = `₹${pp.toLocaleString('en-IN')} per person`;
   document.getElementById('statTotal').textContent = `₹${(total/1000).toFixed(1)}K`;
   document.getElementById('statPP').textContent = `₹${pp.toLocaleString('en-IN')}`;
 
-  // Save overrides
-  state.budgetOverrides = { localTaxi, accom, food, permits, misc };
-  saveState();
+  // Restore input values from state
+  if (o.localTaxi) document.getElementById('budgetLocalTaxi').value = o.localTaxi;
+  if (o.accom) document.getElementById('budgetAccom').value = o.accom;
+  if (o.food) document.getElementById('budgetFood').value = o.food;
+  if (o.permits) document.getElementById('budgetPermits').value = o.permits;
+  if (o.misc) document.getElementById('budgetMisc').value = o.misc;
 }
 
-// Expenses
+/* ===== EXPENSES ===== */
 function addExpense() {
   const desc = document.getElementById('expDesc').value.trim();
   const amount = parseFloat(document.getElementById('expAmount').value);
   const category = document.getElementById('expCategory').value;
   const paidBy = document.getElementById('expPaidBy').value;
   const date = document.getElementById('expDate').value;
-
   if (!desc) return toast('Enter a description');
   if (!amount || amount <= 0) return toast('Enter valid amount');
   if (!paidBy) return toast('Select who paid');
-
   state.expenses.push({ id: Date.now().toString(), desc, amount, category, paidBy, date });
   document.getElementById('expDesc').value = '';
   document.getElementById('expAmount').value = '';
-  saveState();
-  renderExpenses();
-  renderSummary();
-  updateSpentStat();
+  pushState();
+  renderExpenses(); renderSummary(); updateSpentStat();
   toast('Expense added! ✅');
 }
 
 function deleteExpense(id) {
   state.expenses = state.expenses.filter(x => x.id !== id);
-  saveState();
-  renderExpenses();
-  renderSummary();
-  updateSpentStat();
+  pushState();
+  renderExpenses(); renderSummary(); updateSpentStat();
 }
 
 function renderExpenses() {
   const el = document.getElementById('expensesList');
   if (!state.expenses.length) {
-    el.innerHTML = '<div class="no-expenses">No expenses tracked yet.<br>Start adding during the trip! 🧾</div>';
+    el.innerHTML = '<div class="no-expenses">No expenses yet 🧾<br>Add them during the trip!</div>';
     return;
   }
-
-  // Group by date
   const grouped = {};
-  const sorted = [...state.expenses].sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id);
-  sorted.forEach(e => {
-    if (!grouped[e.date]) grouped[e.date] = [];
-    grouped[e.date].push(e);
+  [...state.expenses].sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id).forEach(e => {
+    (grouped[e.date] = grouped[e.date] || []).push(e);
   });
-
-  const dayNames = {
-    '2026-03-01': 'Day 1 · March 1',
-    '2026-03-02': 'Day 2 · March 2',
-    '2026-03-03': 'Day 3 · March 3',
-    '2026-03-04': 'Day 4 · March 4',
-    '2026-03-05': 'Day 5 · March 5',
-    '2026-03-06': 'Day 6 · March 6',
-    '2026-03-07': 'Day 7 · March 7'
-  };
-
+  const dayN = {'2026-03-01':'Day 1','2026-03-02':'Day 2','2026-03-03':'Day 3','2026-03-04':'Day 4','2026-03-05':'Day 5','2026-03-06':'Day 6','2026-03-07':'Day 7'};
   let html = '';
-  for (const date of Object.keys(grouped).sort().reverse()) {
-    const dayTotal = grouped[date].reduce((s, e) => s + e.amount, 0);
-    html += `<div class="expense-day-header">${dayNames[date] || date} — ₹${dayTotal.toLocaleString('en-IN')}</div>`;
-    grouped[date].forEach(e => {
-      const member = state.members.find(m => m.id === e.paidBy);
-      html += `
-        <div class="expense-item">
-          <div class="emoji">${e.category.split(' ')[0]}</div>
-          <div class="details">
-            <div class="desc">${e.desc}</div>
-            <div class="meta">${e.category} · Paid by ${member ? member.name : 'Unknown'}</div>
-          </div>
-          <div class="exp-amount">₹${e.amount.toLocaleString('en-IN')}</div>
-          <button class="delete" onclick="deleteExpense('${e.id}')">🗑️</button>
-        </div>`;
+  for (const d of Object.keys(grouped).sort().reverse()) {
+    const tot = grouped[d].reduce((s,e)=>s+e.amount,0);
+    html += `<div class="expense-day-header">${dayN[d]||d} — ₹${tot.toLocaleString('en-IN')}</div>`;
+    grouped[d].forEach(e => {
+      const m = state.members.find(x=>x.id===e.paidBy);
+      html += `<div class="expense-item"><div class="emoji">${e.category.split(' ')[0]}</div><div class="details"><div class="desc">${e.desc}</div><div class="meta">${e.category} · ${m?m.name:'?'}</div></div><div class="exp-amount">₹${e.amount.toLocaleString('en-IN')}</div><button class="delete" onclick="deleteExpense('${e.id}')">🗑️</button></div>`;
     });
   }
   el.innerHTML = html;
@@ -569,140 +608,89 @@ function renderExpenses() {
 
 function updatePaidByDropdown() {
   const sel = document.getElementById('expPaidBy');
-  const current = sel.value;
-  sel.innerHTML = '<option value="">— Select —</option>' +
-    state.members.map(m => `<option value="${m.id}" ${m.id === current ? 'selected' : ''}>${m.name}</option>`).join('');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">— Select —</option>' + state.members.map(m => `<option value="${m.id}" ${m.id===cur?'selected':''}>${m.name}</option>`).join('');
 }
 
-// Summary
+/* ===== SUMMARY ===== */
 function renderSummary() {
-  const totalSpent = state.expenses.reduce((s, e) => s + e.amount, 0);
+  const total = state.expenses.reduce((s,e)=>s+e.amount,0);
   const n = state.members.length || 1;
-  const perPerson = totalSpent / n;
+  const pp = total / n;
+  document.getElementById('summaryTotalSpent').textContent = `₹${total.toLocaleString('en-IN')}`;
 
-  document.getElementById('summaryTotalSpent').textContent = `₹${totalSpent.toLocaleString('en-IN')}`;
-
-  // Who paid what
-  const paidMap = {};
-  state.members.forEach(m => paidMap[m.id] = { name: m.name, paid: 0 });
-  state.expenses.forEach(e => {
-    if (paidMap[e.paidBy]) paidMap[e.paidBy].paid += e.amount;
-  });
+  const paid = {};
+  state.members.forEach(m => paid[m.id] = { name: m.name, amt: 0 });
+  state.expenses.forEach(e => { if (paid[e.paidBy]) paid[e.paidBy].amt += e.amount; });
 
   const splitEl = document.getElementById('splitList');
   if (!state.expenses.length || !state.members.length) {
     splitEl.innerHTML = '<div class="no-expenses">No data yet</div>';
   } else {
-    splitEl.innerHTML = Object.values(paidMap).map(p => {
-      const diff = p.paid - perPerson;
-      const status = diff > 0 ? `gets back ₹${Math.abs(diff).toFixed(0)}` :
-                     diff < 0 ? `owes ₹${Math.abs(diff).toFixed(0)}` : 'settled ✅';
-      return `<div class="split-item">
-        <div><div class="split-name">${p.name}</div><div class="split-owe">${status}</div></div>
-        <div class="split-paid">₹${p.paid.toLocaleString('en-IN')}</div>
-      </div>`;
+    splitEl.innerHTML = Object.values(paid).map(p => {
+      const d = p.amt - pp;
+      const s = d > 0.5 ? `gets back ₹${Math.round(d)}` : d < -0.5 ? `owes ₹${Math.round(Math.abs(d))}` : 'settled ✅';
+      return `<div class="split-item"><div><div class="split-name">${p.name}</div><div class="split-owe">${s}</div></div><div class="split-paid">₹${p.amt.toLocaleString('en-IN')}</div></div>`;
     }).join('');
   }
 
   // Settlements
-  const settleEl = document.getElementById('settlementsList');
-  if (!state.expenses.length || state.members.length < 2) {
-    settleEl.innerHTML = '<div class="no-expenses">Add expenses to see settlements</div>';
-    return;
+  const stl = document.getElementById('settlementsList');
+  if (!state.expenses.length || state.members.length < 2) { stl.innerHTML = '<div class="no-expenses">Add expenses to see settlements</div>'; return; }
+  const bals = Object.entries(paid).map(([id,p])=>({name:p.name,bal:p.amt-pp}));
+  const debtors = bals.filter(b=>b.bal<-0.5).sort((a,b)=>a.bal-b.bal);
+  const creditors = bals.filter(b=>b.bal>0.5).sort((a,b)=>b.bal-a.bal);
+  let res=[], di=0, ci=0, dB=debtors[0]?Math.abs(debtors[0].bal):0, cB=creditors[0]?creditors[0].bal:0;
+  while(di<debtors.length && ci<creditors.length){
+    const a=Math.min(dB,cB);
+    if(a>0.5) res.push({from:debtors[di].name,to:creditors[ci].name,amt:Math.round(a)});
+    dB-=a; cB-=a;
+    if(dB<0.5){di++; dB=debtors[di]?Math.abs(debtors[di].bal):0;}
+    if(cB<0.5){ci++; cB=creditors[ci]?creditors[ci].bal:0;}
   }
-
-  const balances = Object.entries(paidMap).map(([id, p]) => ({ id, name: p.name, balance: p.paid - perPerson }));
-  const debtors = balances.filter(b => b.balance < -0.5).sort((a, b) => a.balance - b.balance);
-  const creditors = balances.filter(b => b.balance > 0.5).sort((a, b) => b.balance - a.balance);
-
-  let settlements = [];
-  let di = 0, ci = 0;
-  let dBal = debtors.length ? Math.abs(debtors[0].balance) : 0;
-  let cBal = creditors.length ? creditors[0].balance : 0;
-
-  while (di < debtors.length && ci < creditors.length) {
-    const amount = Math.min(dBal, cBal);
-    if (amount > 0.5) {
-      settlements.push({ from: debtors[di].name, to: creditors[ci].name, amount: Math.round(amount) });
-    }
-    dBal -= amount;
-    cBal -= amount;
-    if (dBal < 0.5) { di++; dBal = di < debtors.length ? Math.abs(debtors[di].balance) : 0; }
-    if (cBal < 0.5) { ci++; cBal = ci < creditors.length ? creditors[ci].balance : 0; }
-  }
-
-  if (!settlements.length) {
-    settleEl.innerHTML = '<div class="no-expenses">All settled! 🎉</div>';
-  } else {
-    settleEl.innerHTML = settlements.map(s =>
-      `<div class="split-item">
-        <div class="split-name">${s.from} → ${s.to}</div>
-        <div class="split-paid">₹${s.amount.toLocaleString('en-IN')}</div>
-      </div>`
-    ).join('');
-  }
+  stl.innerHTML = res.length ? res.map(s=>`<div class="split-item"><div class="split-name">${s.from} → ${s.to}</div><div class="split-paid">₹${s.amt.toLocaleString('en-IN')}</div></div>`).join('') : '<div class="no-expenses">All settled! 🎉</div>';
 }
 
 function updateSpentStat() {
-  const total = state.expenses.reduce((s, e) => s + e.amount, 0);
-  document.getElementById('statSpent').textContent = `₹${total.toLocaleString('en-IN')}`;
+  document.getElementById('statSpent').textContent = `₹${state.expenses.reduce((s,e)=>s+e.amount,0).toLocaleString('en-IN')}`;
 }
 
-// Share
+/* ===== SHARE ===== */
 function shareTrip() {
   const n = state.members.length || 8;
-  const totalSpent = state.expenses.reduce((s, e) => s + e.amount, 0);
-  const names = state.members.map(m => m.name).join(', ') || 'Not added yet';
-
-  let text = `🏔️ *Sikkim Family Trip 2026*\n`;
-  text += `📅 March 1-7 | 👥 ${n} members\n`;
-  text += `👨‍👩‍👧‍👦 ${names}\n\n`;
-  text += `💰 *Budget:* ${document.getElementById('budgetGrandTotal').textContent}\n`;
-  text += `👤 *Per Person:* ${document.getElementById('budgetPerPerson').textContent}\n`;
-  text += `🧾 *Spent So Far:* ₹${totalSpent.toLocaleString('en-IN')}\n\n`;
-  text += `🗓️ *Itinerary:*\n`;
-  text += `Day 1: 🚂 Patna → NJP (Vande Bharat 1 PM)\n`;
-  text += `Day 2: 📍 NJP → Gangtok, MG Marg\n`;
-  text += `Day 3: ❄️ Tsomgo Lake + Nathula Pass\n`;
-  text += `Day 4: 🏔️ Gangtok → Lachung\n`;
-  text += `Day 5: 🌸 Yumthang Valley + Zero Point\n`;
-  text += `Day 6: 🏛️ Gangtok sightseeing → NJP\n`;
-  text += `Day 7: 🏠 NJP → Patna (5:10 AM)\n\n`;
-  text += `🔗 Track expenses: ${window.location.href}`;
-
-  if (navigator.share) {
-    navigator.share({ title: 'Sikkim Trip 2026', text });
-  } else {
-    navigator.clipboard.writeText(text).then(() => toast('Copied to clipboard! 📋'));
-  }
+  const spent = state.expenses.reduce((s,e)=>s+e.amount,0);
+  let t = `🏔️ *Sikkim Family Trip 2026*\n📅 March 1-7 | 👥 ${n} members\n👨‍👩‍👧‍👦 ${state.members.map(m=>m.name).join(', ')||'TBD'}\n\n`;
+  t += `💰 *Budget:* ${document.getElementById('budgetGrandTotal').textContent}\n👤 *Per Person:* ${document.getElementById('budgetPerPerson').textContent}\n🧾 *Spent:* ₹${spent.toLocaleString('en-IN')}\n\n`;
+  t += `🗓️ *Plan:*\nDay 1: 🚂 Patna → NJP\nDay 2: 📍 Gangtok, MG Marg\nDay 3: ❄️ Tsomgo Lake\nDay 4: 🏔️ Lachung\nDay 5: 🌸 Yumthang + Zero Point\nDay 6: 🏛️ Sightseeing → NJP\nDay 7: 🏠 NJP → Patna\n\n`;
+  t += `🔗 ${location.href}`;
+  if (navigator.share) navigator.share({title:'Sikkim Trip 2026',text:t});
+  else navigator.clipboard.writeText(t).then(()=>toast('Copied! 📋'));
 }
 
 function shareBudget() {
   const n = state.members.length || 8;
-  let text = `💰 *Sikkim Trip Budget*\n\n`;
-  text += `🚂 Train (round trip): ₹${(2700 * n).toLocaleString('en-IN')}\n`;
-  text += `🚐 Taxis: ₹${(8000 + parseInt(document.getElementById('budgetLocalTaxi').value || 0)).toLocaleString('en-IN')}\n`;
-  text += `🏨 Accommodation: ₹${parseInt(document.getElementById('budgetAccom').value || 0).toLocaleString('en-IN')}\n`;
-  text += `🍽️ Food: ₹${parseInt(document.getElementById('budgetFood').value || 0).toLocaleString('en-IN')}\n`;
-  text += `🎫 Permits: ₹${parseInt(document.getElementById('budgetPermits').value || 0).toLocaleString('en-IN')}\n`;
-  text += `🎒 Misc: ₹${parseInt(document.getElementById('budgetMisc').value || 0).toLocaleString('en-IN')}\n`;
-  text += `\n*Total: ${document.getElementById('budgetGrandTotal').textContent}*\n`;
-  text += `*Per Person: ${document.getElementById('budgetPerPerson').textContent}*\n`;
-  text += `👥 ${n} members`;
-
-  const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
-  window.open(url, '_blank');
+  const o = state.budgetOverrides || {};
+  let t = `💰 *Sikkim Trip Budget*\n\n🚂 Train: ₹${(2700*n).toLocaleString('en-IN')}\n🚐 Taxis: ₹${(8000+(o.localTaxi||14000)).toLocaleString('en-IN')}\n🏨 Stay: ₹${(o.accom||27500).toLocaleString('en-IN')}\n🍽️ Food: ₹${(o.food||19200).toLocaleString('en-IN')}\n🎫 Permits: ₹${(o.permits||2500).toLocaleString('en-IN')}\n🎒 Misc: ₹${(o.misc||5000).toLocaleString('en-IN')}\n\n`;
+  t += `*Total: ${document.getElementById('budgetGrandTotal').textContent}*\n*Per Person: ${document.getElementById('budgetPerPerson').textContent}*\n👥 ${n} members`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(t)}`,'_blank');
 }
 
-// Tabs
-function showTab(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(`sec-${name}`).classList.add('active');
-  event.target.classList.add('active');
-}
+/* ===== TABS ===== */
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const name = this.dataset.tab;
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(`sec-${name}`).classList.add('active');
+    this.classList.add('active');
+    // Hide about section when navigating to other tabs
+    document.getElementById('aboutSection').style.display = name === 'members' ? '' : 'none';
+  });
+});
 
-// Toast
+document.getElementById('memberName').addEventListener('keydown', e => { if(e.key==='Enter') addMember(); });
+
+/* ===== TOAST ===== */
 function toast(msg) {
   const el = document.getElementById('toast');
   el.textContent = msg;
@@ -710,7 +698,7 @@ function toast(msg) {
   setTimeout(() => el.classList.remove('show'), 2500);
 }
 
-// Render All
+/* ===== RENDER ===== */
 function renderAll() {
   renderMembers();
   updatePaidByDropdown();
@@ -719,22 +707,14 @@ function renderAll() {
   renderSummary();
   updateSpentStat();
   document.getElementById('statMembers').textContent = state.members.length;
-
-  // Restore budget overrides
-  if (state.budgetOverrides.localTaxi) document.getElementById('budgetLocalTaxi').value = state.budgetOverrides.localTaxi;
-  if (state.budgetOverrides.accom) document.getElementById('budgetAccom').value = state.budgetOverrides.accom;
-  if (state.budgetOverrides.food) document.getElementById('budgetFood').value = state.budgetOverrides.food;
-  if (state.budgetOverrides.permits) document.getElementById('budgetPermits').value = state.budgetOverrides.permits;
-  if (state.budgetOverrides.misc) document.getElementById('budgetMisc').value = state.budgetOverrides.misc;
-
-  // Set today's date as default for expense
+  document.getElementById('hlMembers').textContent = `${state.members.length || 8} People`;
   const today = new Date().toISOString().split('T')[0];
-  const dateInput = document.getElementById('expDate');
-  if (today >= '2026-03-01' && today <= '2026-03-07') dateInput.value = today;
+  const d = document.getElementById('expDate');
+  if (today >= '2026-03-01' && today <= '2026-03-07') d.value = today;
 }
 
-// Init
-renderAll();
+/* ===== INIT ===== */
+startPolling();
 </script>
 </body>
 </html>
