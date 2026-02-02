@@ -6,253 +6,174 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1B4332">
-<meta name="description" content="Sikkim Family Trip Planner — March 1-7, 2026. Budget, itinerary & expense tracker.">
+<meta name="description" content="Sikkim Family Trip — March 1-7, 2026. Budget, itinerary & expense tracker.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
 <title>🏔️ Sikkim Family Trip 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --primary:#1B4332;--primary-light:#2D6A4F;--primary-lighter:#40916C;
-  --accent:#F77F00;--accent-light:#FCBF49;
-  --bg:#F0F4F0;--card:#FFFFFF;--text:#1a1a2e;--text-light:#555;--text-muted:#888;
-  --border:#E0E7E0;--danger:#E63946;--success:#2D6A4F;
-  --shadow:0 2px 12px rgba(0,0,0,0.08);--shadow-lg:0 8px 30px rgba(0,0,0,0.12);
-  --radius:14px;--radius-sm:10px;
-}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+:root{--pri:#1B4332;--pri-l:#2D6A4F;--pri-ll:#40916C;--acc:#F77F00;--bg:#F0F4F0;--card:#FFF;--txt:#1a1a2e;--txt-l:#555;--txt-m:#888;--bdr:#E0E7E0;--danger:#E63946;--sh:0 2px 12px rgba(0,0,0,.08);--r:14px;--rs:10px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
 .container{max-width:480px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-inset-bottom))}
-
-/* ===== HERO ===== */
+/* Hero */
 .hero{position:relative;height:380px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,67,50,0.1) 0%,rgba(27,67,50,0.5) 50%,rgba(27,67,50,0.92) 100%)}
-.hero-content{position:relative;z-index:1;text-align:center;color:#fff;padding:0 20px calc(40px + env(safe-area-inset-top));width:100%}
-.hero-content h1{font-size:1.8rem;font-weight:800;letter-spacing:-0.5px;text-shadow:0 2px 20px rgba(0,0,0,0.3);margin-bottom:4px}
-.hero-content .subtitle{font-size:0.95rem;opacity:0.9;margin-bottom:14px;font-weight:500}
-.hero-content .dates{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:8px 20px;border-radius:30px;font-size:0.85rem;font-weight:600;border:1px solid rgba(255,255,255,0.2)}
-.hero-content .route{margin-top:10px;font-size:0.78rem;opacity:0.8;letter-spacing:0.3px}
+.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,67,50,.1),rgba(27,67,50,.5) 50%,rgba(27,67,50,.92))}
+.hc{position:relative;z-index:1;text-align:center;color:#fff;padding:0 20px calc(40px + env(safe-area-inset-top));width:100%}
+.hc h1{font-size:1.8rem;font-weight:800;letter-spacing:-.5px;text-shadow:0 2px 20px rgba(0,0,0,.3);margin-bottom:4px}
+.hc .sub{font-size:.95rem;opacity:.9;margin-bottom:14px;font-weight:500}
+.hc .dates{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:8px 20px;border-radius:30px;font-size:.85rem;font-weight:600;border:1px solid rgba(255,255,255,.2)}
+.hc .route{margin-top:10px;font-size:.78rem;opacity:.8;letter-spacing:.3px}
 .hero-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:2}
 .hero-wave svg{display:block;width:100%}
-
-/* ===== ABOUT SIKKIM ===== */
+/* About */
 .about{padding:24px 16px 8px;max-width:480px;margin:0 auto}
 .about-title{font-size:1.05rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.about-text{font-size:0.82rem;color:var(--text-light);line-height:1.7;margin-bottom:16px}
+.about-text{font-size:.82rem;color:var(--txt-l);line-height:1.7;margin-bottom:16px}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px}
-.photo-grid .photo{border-radius:12px;overflow:hidden;aspect-ratio:1;position:relative}
-.photo-grid .photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s}
-.photo-grid .photo:active img{transform:scale(1.05)}
-.photo-grid .photo .photo-label{position:absolute;bottom:0;left:0;right:0;padding:6px 8px;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;font-size:0.6rem;font-weight:600;text-align:center}
+.photo-grid .ph{border-radius:12px;overflow:hidden;aspect-ratio:1;position:relative}
+.photo-grid .ph img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.photo-grid .ph:active img{transform:scale(1.05)}
+.photo-grid .ph span{position:absolute;bottom:0;left:0;right:0;padding:6px 8px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-size:.6rem;font-weight:600;text-align:center}
 .highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
-.highlight{background:var(--card);border-radius:var(--radius-sm);padding:12px;text-align:center;box-shadow:var(--shadow)}
-.highlight .h-emoji{font-size:1.4rem;margin-bottom:4px}
-.highlight .h-title{font-size:0.75rem;font-weight:700;color:var(--primary)}
-.highlight .h-sub{font-size:0.65rem;color:var(--text-muted)}
-
-/* ===== SYNC STATUS ===== */
-.sync-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:6px;font-size:0.7rem;color:var(--text-muted);background:var(--card);border-radius:20px;margin:0 16px 12px;max-width:448px;margin-left:auto;margin-right:auto;box-shadow:var(--shadow)}
-.sync-dot{width:8px;height:8px;border-radius:50%;background:#ccc;transition:background 0.3s}
-.sync-dot.synced{background:#4caf50}
-.sync-dot.syncing{background:var(--accent);animation:pulse 1s infinite}
-.sync-dot.error{background:var(--danger)}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-
-/* ===== STATS ===== */
+.hl{background:var(--card);border-radius:var(--rs);padding:12px;text-align:center;box-shadow:var(--sh)}
+.hl .he{font-size:1.4rem;margin-bottom:4px}.hl .ht{font-size:.75rem;font-weight:700;color:var(--pri)}.hl .hs{font-size:.65rem;color:var(--txt-m)}
+/* Sync */
+.sync-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:6px;font-size:.7rem;color:var(--txt-m);background:var(--card);border-radius:20px;margin:0 16px 12px;max-width:448px;margin-left:auto;margin-right:auto;box-shadow:var(--sh)}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:#ccc;transition:background .3s}
+.sync-dot.ok{background:#4caf50}.sync-dot.ing{background:var(--acc);animation:pulse 1s infinite}.sync-dot.err{background:var(--danger)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+/* Stats */
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 16px 14px;max-width:448px;margin-left:auto;margin-right:auto}
-.stat-card{background:var(--card);border-radius:var(--radius-sm);padding:14px;text-align:center;box-shadow:var(--shadow)}
-.stat-card .num{font-size:1.3rem;font-weight:800;color:var(--primary)}
-.stat-card .label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
-
-/* ===== TABS ===== */
-.tabs{display:flex;gap:4px;margin:0 0 16px;background:var(--card);border-radius:var(--radius-sm);padding:4px;box-shadow:var(--shadow);position:sticky;top:0;z-index:10}
-.tab{flex:1;padding:12px 4px;border:none;background:transparent;font-size:0.72rem;font-weight:600;color:var(--text-muted);border-radius:var(--radius-sm);cursor:pointer;transition:all 0.2s;text-align:center;min-height:44px;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.tab.active{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(27,67,50,0.3)}
-
-/* ===== SECTIONS ===== */
-.section{display:none}
-.section.active{display:block}
-.section-title{font-size:1.1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-
-/* ===== CARDS ===== */
-.card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
-
-/* ===== MEMBERS ===== */
-.member-input{display:flex;gap:8px;margin-bottom:14px}
-.member-input input{flex:1;padding:14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:16px;outline:none;transition:border 0.2s;-webkit-appearance:none}
-.member-input input:focus{border-color:var(--primary)}
-.member-input button{padding:14px 20px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:600;cursor:pointer;min-height:48px;-webkit-tap-highlight-color:transparent}
-.member{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px}
-.member .name{font-weight:600;display:flex;align-items:center;gap:8px}
-.member .avatar{width:34px;height:34px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
-.member .remove{background:none;border:none;color:var(--danger);font-size:1.2rem;cursor:pointer;padding:8px;border-radius:8px;min-width:40px;min-height:40px;display:flex;align-items:center;justify-content:center}
-
-/* ===== BUDGET ===== */
-.budget-group{margin-bottom:16px}
-.budget-group-title{font-size:0.8rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--border)}
-.budget-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0;gap:10px}
-.budget-row:last-child{border:none}
-.budget-row .item{font-size:0.85rem;color:var(--text);flex:1;min-width:0}
-.budget-row .item small{display:block;color:var(--text-muted);font-size:0.7rem}
-.budget-row .amount{font-weight:700;color:var(--primary);font-size:0.9rem;text-align:right;white-space:nowrap}
-.budget-row input[type=number]{width:100px;padding:10px;border:2px solid var(--border);border-radius:8px;font-size:16px;text-align:right;font-weight:600;outline:none;-webkit-appearance:none;min-height:44px}
-.budget-row input:focus{border-color:var(--primary)}
-.budget-total{display:flex;justify-content:space-between;padding:14px 16px;background:var(--primary);color:#fff;border-radius:var(--radius-sm);margin-top:12px;font-weight:700;font-size:1rem}
-.budget-pp{text-align:center;padding:12px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);margin-top:8px;font-weight:700;font-size:1.05rem}
-
-/* ===== ITINERARY ===== */
-.day-card{border-left:3px solid var(--primary-lighter);padding-left:14px;margin-bottom:18px;position:relative}
-.day-card::before{content:'';position:absolute;left:-7px;top:6px;width:11px;height:11px;background:var(--primary);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--primary-lighter)}
-.day-date{font-size:0.7rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
-.day-title{font-size:0.95rem;font-weight:700;margin:2px 0 6px}
-.day-desc{font-size:0.82rem;color:var(--text-light);line-height:1.6}
-.day-tag{display:inline-block;padding:3px 10px;background:var(--bg);border-radius:20px;font-size:0.7rem;color:var(--primary);font-weight:600;margin-top:6px;margin-right:4px}
-.day-highlight{background:linear-gradient(135deg,#f0fff4,#e8f5e9);padding:12px;border-radius:var(--radius-sm);margin-top:8px;font-size:0.78rem;border:1px solid #c8e6c9}
-.day-photo{width:100%;border-radius:var(--radius-sm);margin-top:10px;aspect-ratio:16/9;object-fit:cover}
-
-/* ===== EXPENSES ===== */
-.expense-form{margin-bottom:16px}
-.form-row{margin-bottom:10px}
-.form-row label{display:block;font-size:0.75rem;font-weight:600;color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.3px}
-.form-row input,.form-row select{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:16px;outline:none;background:#fff;transition:border 0.2s;-webkit-appearance:none;min-height:48px}
-.form-row select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 14px center #fff;padding-right:36px}
-.form-row input:focus,.form-row select:focus{border-color:var(--primary)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn-add{width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:700;cursor:pointer;min-height:48px}
-.expense-item{display:flex;align-items:center;gap:10px;padding:12px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px}
-.expense-item .emoji{font-size:1.3rem;flex-shrink:0}
-.expense-item .details{flex:1;min-width:0}
-.expense-item .details .desc{font-weight:600;font-size:0.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.expense-item .details .meta{font-size:0.7rem;color:var(--text-muted)}
-.expense-item .exp-amount{font-weight:800;color:var(--primary);font-size:0.95rem;white-space:nowrap}
-.expense-item .delete{background:none;border:none;color:var(--danger);cursor:pointer;padding:8px;border-radius:8px;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;opacity:0.5;font-size:0.85rem}
-.expense-item .delete:active{opacity:1;background:rgba(230,57,70,0.1)}
-.expense-day-header{font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin:16px 0 8px;padding-bottom:4px;border-bottom:2px dashed var(--border)}
-.no-expenses{text-align:center;padding:30px;color:var(--text-muted);font-size:0.85rem}
-
-/* ===== SUMMARY ===== */
-.summary-card{text-align:center;padding:20px;margin-bottom:12px}
-.summary-card .big-num{font-size:2rem;font-weight:800;color:var(--primary)}
-.summary-card .big-label{font-size:0.8rem;color:var(--text-muted)}
-.split-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px}
-.split-item .split-name{font-weight:600;font-size:0.85rem}
-.split-item .split-paid{font-size:0.85rem;color:var(--primary);font-weight:700;white-space:nowrap}
-.split-item .split-owe{font-size:0.75rem;color:var(--text-muted)}
-.share-btn{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px}
-.share-btn.secondary{background:var(--accent)}
-
-/* ===== TOAST ===== */
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--primary);color:#fff;padding:12px 24px;border-radius:30px;font-size:0.85rem;font-weight:600;box-shadow:var(--shadow-lg);transition:transform 0.3s ease;z-index:100;white-space:nowrap;max-width:90vw;text-overflow:ellipsis;overflow:hidden}
+.sc{background:var(--card);border-radius:var(--rs);padding:14px;text-align:center;box-shadow:var(--sh)}
+.sc .n{font-size:1.3rem;font-weight:800;color:var(--pri)}.sc .l{font-size:.7rem;color:var(--txt-m);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+/* Tabs */
+.tabs{display:flex;gap:4px;margin:0 0 16px;background:var(--card);border-radius:var(--rs);padding:4px;box-shadow:var(--sh);position:sticky;top:0;z-index:10}
+.tab{flex:1;padding:12px 4px;border:none;background:transparent;font-size:.72rem;font-weight:600;color:var(--txt-m);border-radius:var(--rs);cursor:pointer;transition:all .2s;text-align:center;min-height:44px;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tab.active{background:var(--pri);color:#fff;box-shadow:0 2px 8px rgba(27,67,50,.3)}
+.section{display:none}.section.active{display:block}
+.stitle{font-size:1.1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.card{background:var(--card);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+/* Members */
+.mi{display:flex;gap:8px;margin-bottom:14px}
+.mi input{flex:1;padding:14px;border:2px solid var(--bdr);border-radius:var(--rs);font-size:16px;outline:none;-webkit-appearance:none}
+.mi input:focus{border-color:var(--pri)}
+.mi button{padding:14px 20px;background:var(--pri);color:#fff;border:none;border-radius:var(--rs);font-size:16px;font-weight:600;cursor:pointer;min-height:48px}
+.mem{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:var(--rs);margin-bottom:8px}
+.mem .nm{font-weight:600;display:flex;align-items:center;gap:8px}
+.mem .av{width:34px;height:34px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.mem .rm{background:none;border:none;color:var(--danger);font-size:1.2rem;cursor:pointer;padding:8px;border-radius:8px;min-width:40px;min-height:40px;display:flex;align-items:center;justify-content:center}
+/* Budget */
+.bg{margin-bottom:16px}
+.bgt{font-size:.8rem;font-weight:700;color:var(--pri);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--bdr)}
+.br{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0;gap:10px}
+.br:last-child{border:none}
+.br .it{font-size:.85rem;flex:1;min-width:0}.br .it small{display:block;color:var(--txt-m);font-size:.7rem}
+.br .am{font-weight:700;color:var(--pri);font-size:.9rem;text-align:right;white-space:nowrap}
+.br input[type=number]{width:100px;padding:10px;border:2px solid var(--bdr);border-radius:8px;font-size:16px;text-align:right;font-weight:600;outline:none;-webkit-appearance:none;min-height:44px}
+.br input:focus{border-color:var(--pri)}
+.bt{display:flex;justify-content:space-between;padding:14px 16px;background:var(--pri);color:#fff;border-radius:var(--rs);margin-top:12px;font-weight:700;font-size:1rem}
+.bpp{text-align:center;padding:12px;background:var(--acc);color:#fff;border-radius:var(--rs);margin-top:8px;font-weight:700;font-size:1.05rem}
+/* Itinerary */
+.legend{display:flex;gap:10px;margin-bottom:16px;font-size:.72rem;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:4px}
+.leg-badge{padding:2px 8px;border-radius:10px;font-weight:600;color:#fff;font-size:.65rem}
+.dc{border-left:3px solid var(--pri-ll);padding-left:14px;margin-bottom:18px;position:relative}
+.dc::before{content:'';position:absolute;left:-7px;top:6px;width:11px;height:11px;background:var(--pri);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--pri-ll)}
+.dd{font-size:.7rem;color:var(--acc);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.dt{font-size:.95rem;font-weight:700;margin:2px 0 6px}
+.ddesc{font-size:.82rem;color:var(--txt-l);line-height:1.6}
+.dtag{display:inline-block;padding:3px 10px;background:var(--bg);border-radius:20px;font-size:.7rem;color:var(--pri);font-weight:600;margin-top:6px;margin-right:4px}
+.dhigh{background:linear-gradient(135deg,#f0fff4,#e8f5e9);padding:12px;border-radius:var(--rs);margin-top:8px;font-size:.78rem;border:1px solid #c8e6c9}
+.dphoto{width:100%;border-radius:var(--rs);margin-top:10px;aspect-ratio:16/9;object-fit:cover}
+/* Editable itinerary */
+.edit-btn{background:none;border:1px solid var(--bdr);color:var(--txt-m);font-size:.7rem;padding:4px 10px;border-radius:16px;cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;gap:4px}
+.edit-btn:active{background:var(--bg)}
+.edit-area{width:100%;min-height:80px;padding:10px;border:2px solid var(--pri-ll);border-radius:var(--rs);font-size:.82rem;font-family:inherit;line-height:1.6;resize:vertical;outline:none;margin-top:8px;display:none;color:var(--txt-l)}
+.edit-area.show{display:block}
+.save-edit{background:var(--pri);color:#fff;border:none;padding:8px 16px;border-radius:var(--rs);font-size:.8rem;font-weight:600;cursor:pointer;margin-top:6px;display:none}
+.save-edit.show{display:inline-block}
+/* Expenses */
+.fr{margin-bottom:10px}
+.fr label{display:block;font-size:.75rem;font-weight:600;color:var(--txt-m);margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}
+.fr input,.fr select{width:100%;padding:13px 14px;border:2px solid var(--bdr);border-radius:var(--rs);font-size:16px;outline:none;background:#fff;-webkit-appearance:none;min-height:48px}
+.fr select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 14px center #fff;padding-right:36px}
+.fr input:focus,.fr select:focus{border-color:var(--pri)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-add{width:100%;padding:14px;background:var(--acc);color:#fff;border:none;border-radius:var(--rs);font-size:16px;font-weight:700;cursor:pointer;min-height:48px}
+.ei{display:flex;align-items:center;gap:10px;padding:12px;background:var(--bg);border-radius:var(--rs);margin-bottom:8px}
+.ei .ej{font-size:1.3rem;flex-shrink:0}
+.ei .ed{flex:1;min-width:0}.ei .ed .en{font-weight:600;font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ei .ed .em{font-size:.7rem;color:var(--txt-m)}
+.ei .ea{font-weight:800;color:var(--pri);font-size:.95rem;white-space:nowrap}
+.ei .del{background:none;border:none;color:var(--danger);cursor:pointer;padding:8px;border-radius:8px;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;opacity:.5;font-size:.85rem}
+.ei .del:active{opacity:1;background:rgba(230,57,70,.1)}
+.edh{font-size:.75rem;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.5px;margin:16px 0 8px;padding-bottom:4px;border-bottom:2px dashed var(--bdr)}
+.noe{text-align:center;padding:30px;color:var(--txt-m);font-size:.85rem}
+/* Summary */
+.scard{text-align:center;padding:20px;margin-bottom:12px}
+.scard .bn{font-size:2rem;font-weight:800;color:var(--pri)}.scard .bl{font-size:.8rem;color:var(--txt-m)}
+.si{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:var(--rs);margin-bottom:8px}
+.si .sn{font-weight:600;font-size:.85rem}.si .sp{font-size:.85rem;color:var(--pri);font-weight:700;white-space:nowrap}
+.si .so{font-size:.75rem;color:var(--txt-m)}
+.sbtn{width:100%;padding:14px;color:#fff;border:none;border-radius:var(--rs);font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px}
+.sbtn.p{background:var(--pri)}.sbtn.s{background:var(--acc)}
+/* Toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--pri);color:#fff;padding:12px 24px;border-radius:30px;font-size:.85rem;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.12);transition:transform .3s;z-index:100;white-space:nowrap;max-width:90vw}
 .toast.show{transform:translateX(-50%) translateY(0)}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:360px){
-  .hero{height:300px}
-  .hero-content h1{font-size:1.4rem}
-  .stats{gap:8px;margin:0 12px 12px}
-  .stat-card{padding:10px}
-  .stat-card .num{font-size:1.1rem}
-  .tab{font-size:0.65rem;padding:10px 2px}
-  .form-grid{grid-template-columns:1fr}
-  .photo-grid{gap:6px}
-  .highlights{gap:6px}
-}
-@media(min-width:500px){
-  .container{padding:0 24px 100px}
-  .hero{height:440px}
-  .hero-content h1{font-size:2.2rem}
-}
-
-/* Touch */
-button,a,.tab{-webkit-tap-highlight-color:transparent}
-button:active,.tab:active{transform:scale(0.97)}
-.tab,.member .remove,.delete{-webkit-user-select:none;user-select:none}
-html{scroll-behavior:smooth}
-
-.empty-state{text-align:center;padding:40px 20px;color:var(--text-muted)}
-.empty-state .emoji{font-size:2.5rem;margin-bottom:10px}
-
-/* Loading shimmer */
-.shimmer{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* Responsive */
+@media(max-width:360px){.hero{height:300px}.hc h1{font-size:1.4rem}.stats{gap:8px;margin:0 12px 12px}.sc{padding:10px}.sc .n{font-size:1.1rem}.tab{font-size:.65rem;padding:10px 2px}.fg{grid-template-columns:1fr}.photo-grid{gap:6px}}
+@media(min-width:500px){.container{padding:0 24px 100px}.hero{height:440px}.hc h1{font-size:2.2rem}}
+button,a,.tab{-webkit-tap-highlight-color:transparent}button:active,.tab:active{transform:scale(.97)}
+.tab,.mem .rm,.del{-webkit-user-select:none;user-select:none}html{scroll-behavior:smooth}
+.empty{text-align:center;padding:40px 20px;color:var(--txt-m)}.empty .emo{font-size:2.5rem;margin-bottom:10px}
 </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80" alt="Sikkim Mountains" loading="eager">
-  </div>
-  <div class="hero-content">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80" alt="Sikkim Mountains" loading="eager"></div>
+  <div class="hc">
     <h1>Sikkim Family Trip 🏔️</h1>
-    <p class="subtitle">Where mountains meet the sky</p>
+    <p class="sub">Where mountains meet the sky</p>
     <div class="dates">📅 March 1 — 7, 2026</div>
     <p class="route">Patna → NJP → Gangtok → Lachung → Yumthang → Patna</p>
   </div>
-  <div class="hero-wave">
-    <svg viewBox="0 0 1440 60" fill="none"><path d="M0,40 C360,70 720,0 1080,40 C1260,55 1380,45 1440,40 L1440,60 L0,60Z" fill="#F0F4F0"/></svg>
-  </div>
+  <div class="hero-wave"><svg viewBox="0 0 1440 60" fill="none"><path d="M0,40C360,70 720,0 1080,40C1260,55 1380,45 1440,40L1440,60L0,60Z" fill="#F0F4F0"/></svg></div>
 </div>
 
-<!-- ===== ABOUT SIKKIM ===== -->
+<!-- ABOUT -->
 <div class="about" id="aboutSection">
   <div class="about-title">✨ About the Destination</div>
-  <p class="about-text">
-    Sikkim — a paradise tucked in the northeast Himalayas. Home to the majestic <strong>Kanchenjunga</strong> (world's 3rd highest peak), sacred monasteries, frozen lakes, and the stunning <strong>Yumthang Valley of Flowers</strong>. From the bustling MG Marg in Gangtok to the snow-covered Zero Point at 15,300 ft — this trip takes us through some of India's most breathtaking landscapes. 🌄
-  </p>
-
+  <p class="about-text">Sikkim — a Himalayan paradise. Home to the majestic <strong>Kanchenjunga</strong> (world's 3rd highest peak), sacred monasteries, frozen lakes & the stunning <strong>Yumthang Valley of Flowers</strong>. From the bustling MG Marg in Gangtok to snow-covered Zero Point at 15,300 ft — breathtaking landscapes at every turn. 🌄</p>
   <div class="photo-grid">
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1622397745187-4505c20adfc8?w=300&q=80" alt="Gangtok" loading="lazy">
-      <div class="photo-label">Gangtok</div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=300&q=80" alt="Tsomgo Lake" loading="lazy">
-      <div class="photo-label">Tsomgo Lake</div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1614512210750-8aab39580399?w=300&q=80" alt="Mountains" loading="lazy">
-      <div class="photo-label">Kanchenjunga</div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1633512810647-e93fbf498e2a?w=300&q=80" alt="Monastery" loading="lazy">
-      <div class="photo-label">Monastery</div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1626015449887-1eafb3791e67?w=300&q=80" alt="Yumthang" loading="lazy">
-      <div class="photo-label">Yumthang</div>
-    </div>
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=300&q=80" alt="Prayer Flags" loading="lazy">
-      <div class="photo-label">Prayer Flags</div>
-    </div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1635346537940-9d51faeb6e32?w=300&q=80" alt="Gangtok" loading="lazy"><span>Gangtok</span></div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=300&q=80" alt="Tsomgo Lake" loading="lazy"><span>Tsomgo Lake</span></div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1697554447470-52c45e27ce84?w=300&q=80" alt="Kanchenjunga" loading="lazy"><span>Kanchenjunga</span></div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1634308670152-17f7f1aa4e79?w=300&q=80" alt="Monastery" loading="lazy"><span>Monastery</span></div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1631986684487-a1ec60119cd7?w=300&q=80" alt="Snow Peaks" loading="lazy"><span>Snow Peaks</span></div>
+    <div class="ph"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=300&q=80" alt="Prayer Flags" loading="lazy"><span>Prayer Flags</span></div>
   </div>
-
   <div class="highlights">
-    <div class="highlight"><div class="h-emoji">🏔️</div><div class="h-title">15,300 ft</div><div class="h-sub">Zero Point altitude</div></div>
-    <div class="highlight"><div class="h-emoji">📅</div><div class="h-title">7 Days</div><div class="h-sub">March 1-7, 2026</div></div>
-    <div class="highlight"><div class="h-emoji">👨‍👩‍👧‍👦</div><div class="h-title" id="hlMembers">8 People</div><div class="h-sub">Family trip</div></div>
-    <div class="highlight"><div class="h-emoji">🚂</div><div class="h-title">Vande Bharat</div><div class="h-sub">Patna ↔ NJP</div></div>
+    <div class="hl"><div class="he">🏔️</div><div class="ht">15,300 ft</div><div class="hs">Zero Point altitude</div></div>
+    <div class="hl"><div class="he">📅</div><div class="ht">7 Days</div><div class="hs">March 1-7, 2026</div></div>
+    <div class="hl"><div class="he">👨‍👩‍👧‍👦</div><div class="ht" id="hlMem">8 People</div><div class="hs">Family trip</div></div>
+    <div class="hl"><div class="he">🚂</div><div class="ht">Vande Bharat</div><div class="hs">Patna ↔ NJP</div></div>
   </div>
 </div>
 
-<!-- ===== SYNC STATUS ===== -->
-<div class="sync-bar">
-  <div class="sync-dot" id="syncDot"></div>
-  <span id="syncText">Connecting...</span>
-</div>
+<!-- SYNC -->
+<div class="sync-bar"><div class="sync-dot" id="syncDot"></div><span id="syncTxt">Connecting...</span></div>
 
-<!-- ===== STATS ===== -->
+<!-- STATS -->
 <div class="stats">
-  <div class="stat-card"><div class="num" id="statTotal">—</div><div class="label">Total Budget</div></div>
-  <div class="stat-card"><div class="num" id="statPP">—</div><div class="label">Per Person</div></div>
-  <div class="stat-card"><div class="num" id="statMembers">0</div><div class="label">Members</div></div>
-  <div class="stat-card"><div class="num" id="statSpent">₹0</div><div class="label">Spent So Far</div></div>
+  <div class="sc"><div class="n" id="statT">—</div><div class="l">Total Budget</div></div>
+  <div class="sc"><div class="n" id="statP">—</div><div class="l">Per Person</div></div>
+  <div class="sc"><div class="n" id="statM">0</div><div class="l">Members</div></div>
+  <div class="sc"><div class="n" id="statS">₹0</div><div class="l">Spent So Far</div></div>
 </div>
 
 <div class="container">
-  <!-- Tabs -->
   <div class="tabs">
     <button class="tab active" data-tab="members">👥 Team</button>
     <button class="tab" data-tab="budget">💰 Budget</button>
@@ -261,465 +182,230 @@ html{scroll-behavior:smooth}
     <button class="tab" data-tab="summary">📊 Split</button>
   </div>
 
-  <!-- ===== MEMBERS ===== -->
+  <!-- MEMBERS -->
   <div class="section active" id="sec-members">
-    <div class="section-title">👥 Family Members</div>
-    <div class="member-input">
-      <input type="text" id="memberName" placeholder="Add family member..." maxlength="30">
-      <button onclick="addMember()">Add</button>
-    </div>
-    <div id="membersList"></div>
+    <div class="stitle">👥 Family Members</div>
+    <div class="mi"><input type="text" id="memIn" placeholder="Add family member..." maxlength="30"><button onclick="addMember()">Add</button></div>
+    <div id="memList"></div>
   </div>
 
-  <!-- ===== BUDGET ===== -->
+  <!-- BUDGET -->
   <div class="section" id="sec-budget">
-    <div class="section-title">💰 Trip Budget</div>
+    <div class="stitle">💰 Trip Budget</div>
     <div class="card">
-      <div class="budget-group">
-        <div class="budget-group-title">🚂 Transport</div>
-        <div class="budget-row"><div class="item">Vande Bharat: Patna → NJP<small>₹1,500 × <span class="m-count">8</span> ppl</small></div><div class="amount" id="calcTrainGo"></div></div>
-        <div class="budget-row"><div class="item">Vande Bharat: NJP → Patna<small>₹1,200 × <span class="m-count">8</span> ppl</small></div><div class="amount" id="calcTrainReturn"></div></div>
-        <div class="budget-row"><div class="item">Taxi: NJP → Gangtok<small>Shared vehicle</small></div><div class="amount">₹4,000</div></div>
-        <div class="budget-row"><div class="item">Taxi: Gangtok → NJP<small>Shared vehicle</small></div><div class="amount">₹4,000</div></div>
-        <div class="budget-row"><div class="item">Local Sightseeing<small>Tsomgo, Lachung-Yumthang, Local</small></div><div class="amount"><input type="number" id="budgetLocalTaxi" value="14000" onchange="onBudgetChange()"></div></div>
+      <div class="bg"><div class="bgt">🚂 Transport</div>
+        <div class="br"><div class="it">Vande Bharat: Patna → NJP<small>₹1,500 × <span class="mc">8</span> ppl</small></div><div class="am" id="cTG"></div></div>
+        <div class="br"><div class="it">Vande Bharat: NJP → Patna<small>₹1,200 × <span class="mc">8</span> ppl</small></div><div class="am" id="cTR"></div></div>
+        <div class="br"><div class="it">Taxi: NJP ↔ Gangtok<small>₹4,000 each way</small></div><div class="am">₹8,000</div></div>
+        <div class="br"><div class="it">Local Sightseeing<small>Tsomgo, Lachung-Yumthang, Local</small></div><div class="am"><input type="number" id="bLT" value="14000" onchange="onBudget()"></div></div>
       </div>
-      <div class="budget-group">
-        <div class="budget-group-title">🏨 Accommodation</div>
-        <div class="budget-row"><div class="item">Hotels (4 nights)<small>Gangtok + Lachung + NJP</small></div><div class="amount"><input type="number" id="budgetAccom" value="27500" onchange="onBudgetChange()"></div></div>
+      <div class="bg"><div class="bgt">🏨 Accommodation</div>
+        <div class="br"><div class="it">Hotels (4 nights)<small>Gangtok + Lachung + NJP</small></div><div class="am"><input type="number" id="bAc" value="27500" onchange="onBudget()"></div></div>
       </div>
-      <div class="budget-group">
-        <div class="budget-group-title">🍽️ Food</div>
-        <div class="budget-row"><div class="item">Meals (6 days)<small>~₹400/person/day × <span class="m-count">8</span> × 6</small></div><div class="amount"><input type="number" id="budgetFood" value="19200" onchange="onBudgetChange()"></div></div>
+      <div class="bg"><div class="bgt">🍽️ Food</div>
+        <div class="br"><div class="it">Meals (6 days)<small>~₹400/person/day × <span class="mc">8</span> × 6</small></div><div class="am"><input type="number" id="bFd" value="19200" onchange="onBudget()"></div></div>
       </div>
-      <div class="budget-group">
-        <div class="budget-group-title">🎫 Permits & Entry</div>
-        <div class="budget-row"><div class="item">Nathula/Tsomgo + entries<small>~₹300/person</small></div><div class="amount"><input type="number" id="budgetPermits" value="2500" onchange="onBudgetChange()"></div></div>
+      <div class="bg"><div class="bgt">🎫 Permits & Entry</div>
+        <div class="br"><div class="it">Nathula/Tsomgo + entries<small>~₹300/person</small></div><div class="am"><input type="number" id="bPm" value="2500" onchange="onBudget()"></div></div>
       </div>
-      <div class="budget-group">
-        <div class="budget-group-title">🎒 Miscellaneous</div>
-        <div class="budget-row"><div class="item">Shopping, tips, snacks<small>Buffer amount</small></div><div class="amount"><input type="number" id="budgetMisc" value="5000" onchange="onBudgetChange()"></div></div>
+      <div class="bg"><div class="bgt">🎒 Miscellaneous</div>
+        <div class="br"><div class="it">Shopping, tips, snacks<small>Buffer</small></div><div class="am"><input type="number" id="bMs" value="5000" onchange="onBudget()"></div></div>
       </div>
-      <div class="budget-total"><span>Total Estimated</span><span id="budgetGrandTotal">—</span></div>
-      <div class="budget-pp" id="budgetPerPerson">—</div>
+      <div class="bt"><span>Total Estimated</span><span id="bTotal">—</span></div>
+      <div class="bpp" id="bPP">—</div>
     </div>
   </div>
 
-  <!-- ===== ITINERARY ===== -->
+  <!-- ITINERARY -->
   <div class="section" id="sec-itinerary">
-    <div class="section-title">🗓️ Day-by-Day Plan</div>
-    <div style="display:flex;gap:10px;margin-bottom:16px;font-size:0.72rem;flex-wrap:wrap">
-      <span style="display:flex;align-items:center;gap:4px"><span style="background:#4caf50;color:#fff;padding:2px 8px;border-radius:10px;font-weight:600">🟢 Easy</span> Family-friendly</span>
-      <span style="display:flex;align-items:center;gap:4px"><span style="background:#FF9800;color:#fff;padding:2px 8px;border-radius:10px;font-weight:600">🟡 Moderate</span> Some effort</span>
-      <span>🥾 = Trek included</span>
+    <div class="stitle">🗓️ Day-by-Day Plan</div>
+    <div class="legend">
+      <span><span class="leg-badge" style="background:#4caf50">🟢 Easy</span> Family-friendly</span>
+      <span><span class="leg-badge" style="background:#FF9800">🟡 Moderate</span> Some effort</span>
+      <span>🥾 = Trek</span>
     </div>
-
-    <div class="day-card">
-      <div class="day-date">Day 1 · Sun, March 1</div>
-      <div class="day-title">🚂 Patna → NJP</div>
-      <div class="day-desc">Board Vande Bharat Express at <strong>13:00</strong> from Patna. 7-hour scenic ride through Bihar & Bengal. <strong>Arrive NJP at ~8:00 PM</strong>. Check into hotel near NJP/Siliguri for the night.</div>
-      <div class="day-tag">🚂 Vande Bharat</div><div class="day-tag">🕐 1 PM → 8 PM</div><div class="day-tag">🏨 Overnight NJP</div>
-      <div class="day-highlight">💡 Reach Patna station by 12:15. Carry packed dinner for the train. Keep warm clothes in hand baggage — NJP will be cooler!</div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-date">Day 2 · Mon, March 2</div>
-      <div class="day-title">📍 NJP → Gangtok + Tashi Trek</div>
-      <div class="day-desc">Early morning taxi from NJP to Gangtok (~4.5 hrs through winding mountain roads). Check into hotel, lunch. Afternoon: <strong>🥾 Trek to Tashi Viewpoint</strong> — easy 30-min uphill hike with jaw-dropping panoramic views of Kanchenjunga range. Evening stroll at <strong>MG Marg</strong> — momos, thukpa, shopping!</div>
-      <div class="day-tag">🚐 4.5 hr drive</div><div class="day-tag">🥾 Tashi Trek</div><div class="day-tag">🌃 MG Marg</div><div class="day-tag">🟢 Easy</div>
-      <img class="day-photo" src="https://images.unsplash.com/photo-1622397745187-4505c20adfc8?w=600&q=75" alt="Gangtok MG Marg" loading="lazy">
-    </div>
-
-    <div class="day-card">
-      <div class="day-date">Day 3 · Tue, March 3</div>
-      <div class="day-title">❄️ Tsomgo Lake & Baba Mandir</div>
-      <div class="day-desc">Full day excursion! <strong>Tsomgo Lake</strong> (12,310 ft) — frozen & magical in March. <strong>🥾 Trek around Tsomgo Lake</strong> (~2 km loop trail along the lake shore, stunning reflections & yak sightings). Visit <strong>Baba Harbhajan Singh Mandir</strong>. Try for <strong>Nathula Pass</strong> (India-China border) if open.</div>
-      <div class="day-tag">📸 Tsomgo Lake</div><div class="day-tag">🥾 Lake Trek</div><div class="day-tag">🛕 Baba Mandir</div><div class="day-tag">🟢 Easy</div>
-      <div class="day-highlight">💡 <strong>Note:</strong> Nathula closed Mon & Tue. March 3 is Tuesday — so Tsomgo + Baba Mandir + short trek day. Apply permits on Day 2 via hotel. Carry Aadhaar.</div>
-      <img class="day-photo" src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=600&q=75" alt="Tsomgo Lake" loading="lazy">
-    </div>
-
-    <div class="day-card">
-      <div class="day-date">Day 4 · Wed, March 4</div>
-      <div class="day-title">🏔️ Gangtok → Lachung + Waterfall Trek</div>
-      <div class="day-desc">Breathtaking 5-6 hour drive to Lachung. Enroute stop at <strong>Naga Waterfall</strong> & <strong>Seven Sisters Waterfall</strong>. <strong>🥾 Short trek to Bhim Nala Waterfall</strong> (~1 km forest trail, beautiful cascade). Cross Chungthang, see the Lachen-Lachung river confluence. Overnight in <strong>Lachung village</strong> at 8,610 ft.</div>
-      <div class="day-tag">🚗 5-6 hrs</div><div class="day-tag">🥾 Waterfall Trek</div><div class="day-tag">🏡 Lachung</div><div class="day-tag">🟢 Easy</div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-date">Day 5 · Thu, March 5</div>
-      <div class="day-title">🌸 Yumthang Valley Trek & Zero Point</div>
-      <div class="day-desc">Early morning drive to <strong>Yumthang Valley</strong> (11,800 ft). <strong>🥾 Trek through the Valley of Flowers</strong> — 3 km walk through the snow-covered valley along the Teesta river, surrounded by rhododendrons and silver firs. In March, expect snow! Continue to <strong>Zero Point</strong> (15,300 ft) if road is open — pure white snow desert! Return to Gangtok by evening.</div>
-      <div class="day-tag">🥾 Valley Trek (3km)</div><div class="day-tag">❄️ Zero Point</div><div class="day-tag">📸 Snow!</div><div class="day-tag">🟡 Moderate</div>
-      <div class="day-highlight">💡 Yumthang trek is the highlight! Walk slowly at altitude. Carry gloves, caps, sunscreen, water. Return to Gangtok is 5-6 hrs — long but gorgeous day.</div>
-      <img class="day-photo" src="https://images.unsplash.com/photo-1626015449887-1eafb3791e67?w=600&q=75" alt="Yumthang Valley" loading="lazy">
-    </div>
-
-    <div class="day-card">
-      <div class="day-date">Day 6 · Fri, March 6</div>
-      <div class="day-title">🏛️ Hanuman Tok Trek + Gangtok → NJP</div>
-      <div class="day-desc">Early morning: <strong>🥾 Trek to Hanuman Tok</strong> — 1.5 km uphill trail through pine forest to one of Gangtok's highest points (7,200 ft). Stunning sunrise view of Kanchenjunga! Visit <strong>Rumtek Monastery</strong> (largest in Sikkim). Last-minute shopping at MG Marg. Afternoon drive to NJP (~4.5 hrs), overnight near station.</div>
-      <div class="day-tag">🥾 Hanuman Tok Trek</div><div class="day-tag">🛕 Rumtek</div><div class="day-tag">🛍️ Shopping</div><div class="day-tag">🟡 Moderate</div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-date">Day 7 · Sat, March 7</div>
-      <div class="day-title">🏠 NJP → Patna</div>
-      <div class="day-desc">Board Vande Bharat at <strong>5:10 AM</strong> from NJP. 7 hours back. Share trip photos, relive the memories. <strong>Arrive Patna ~12:10 PM</strong>. Home sweet home! 🏠</div>
-      <div class="day-tag">🚂 Vande Bharat</div><div class="day-tag">🕐 5:10 AM → 12:10 PM</div><div class="day-tag">🏠 Home!</div>
-      <div class="day-highlight">⚠️ Set multiple alarms! Pack bags night before. Keep breakfast ready. Reach NJP station by 4:30 AM.</div>
-    </div>
+    <div id="itineraryList"></div>
   </div>
 
-  <!-- ===== EXPENSES ===== -->
+  <!-- EXPENSES -->
   <div class="section" id="sec-expenses">
-    <div class="section-title">🧾 Daily Expenses</div>
-    <div class="card expense-form">
-      <div class="form-row"><label>What was it for?</label><input type="text" id="expDesc" placeholder="e.g. Lunch at MG Marg" maxlength="50"></div>
-      <div class="form-grid">
-        <div class="form-row"><label>Amount (₹)</label><input type="number" id="expAmount" placeholder="500" min="0" inputmode="numeric"></div>
-        <div class="form-row"><label>Category</label>
-          <select id="expCategory">
-            <option value="🍽️ Food">🍽️ Food</option>
-            <option value="🚗 Transport">🚗 Transport</option>
-            <option value="🏨 Stay">🏨 Stay</option>
-            <option value="🎫 Entry/Permit">🎫 Entry</option>
-            <option value="🛍️ Shopping">🛍️ Shopping</option>
-            <option value="☕ Snacks">☕ Snacks</option>
-            <option value="📦 Other">📦 Other</option>
-          </select>
-        </div>
+    <div class="stitle">🧾 Daily Expenses</div>
+    <div class="card">
+      <div class="fr"><label>What was it for?</label><input type="text" id="eDesc" placeholder="e.g. Lunch at MG Marg" maxlength="50"></div>
+      <div class="fg">
+        <div class="fr"><label>Amount (₹)</label><input type="number" id="eAmt" placeholder="500" min="0" inputmode="numeric"></div>
+        <div class="fr"><label>Category</label><select id="eCat"><option value="🍽️ Food">🍽️ Food</option><option value="🚗 Transport">🚗 Transport</option><option value="🏨 Stay">🏨 Stay</option><option value="🎫 Entry">🎫 Entry</option><option value="🛍️ Shopping">🛍️ Shopping</option><option value="☕ Snacks">☕ Snacks</option><option value="📦 Other">📦 Other</option></select></div>
       </div>
-      <div class="form-grid">
-        <div class="form-row"><label>Paid By</label><select id="expPaidBy"><option value="">— Select —</option></select></div>
-        <div class="form-row"><label>Date</label><input type="date" id="expDate" value="2026-03-01" min="2026-03-01" max="2026-03-07"></div>
+      <div class="fg">
+        <div class="fr"><label>Paid By</label><select id="ePB"><option value="">— Select —</option></select></div>
+        <div class="fr"><label>Date</label><input type="date" id="eDt" value="2026-03-01" min="2026-03-01" max="2026-03-07"></div>
       </div>
       <button class="btn-add" onclick="addExpense()">+ Add Expense</button>
     </div>
-    <div id="expensesList"></div>
+    <div id="expList"></div>
   </div>
 
-  <!-- ===== SUMMARY ===== -->
+  <!-- SUMMARY -->
   <div class="section" id="sec-summary">
-    <div class="section-title">📊 Expense Summary</div>
-    <div class="card summary-card">
-      <div class="big-num" id="summaryTotalSpent">₹0</div>
-      <div class="big-label">Total Spent So Far</div>
-    </div>
-    <div class="card">
-      <div class="budget-group-title" style="margin-bottom:10px">Who Paid What</div>
-      <div id="splitList"></div>
-    </div>
-    <div class="card">
-      <div class="budget-group-title" style="margin-bottom:10px">Settlements Needed</div>
-      <div id="settlementsList"><div class="no-expenses">Add expenses to see settlements</div></div>
-    </div>
-    <button class="share-btn" onclick="shareTrip()">📤 Share Trip Summary</button>
-    <button class="share-btn secondary" onclick="shareBudget()">💰 Share Budget to WhatsApp</button>
+    <div class="stitle">📊 Expense Summary</div>
+    <div class="card scard"><div class="bn" id="sumTotal">₹0</div><div class="bl">Total Spent So Far</div></div>
+    <div class="card"><div class="bgt" style="margin-bottom:10px">Who Paid What</div><div id="splitList"></div></div>
+    <div class="card"><div class="bgt" style="margin-bottom:10px">Settlements Needed</div><div id="settleList"><div class="noe">Add expenses to see settlements</div></div></div>
+    <button class="sbtn p" onclick="shareTrip()">📤 Share Trip Summary</button>
+    <button class="sbtn s" onclick="shareBudget()">💰 Share Budget to WhatsApp</button>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===== SYNC ENGINE (jsonblob.com) ===== */
-const BLOB_ID = '019c1f01-b904-7118-a835-54e14b5c82c4';
-const API = `https://jsonblob.com/api/jsonBlob/${BLOB_ID}`;
-const POLL_MS = 5000;
-let state = { members: [], expenses: [], budgetOverrides: {}, updatedAt: 0 };
-let lastKnownUpdate = 0;
-let syncing = false;
-let pollTimer = null;
+/* ===== CONFIG ===== */
+const API='https://api.npoint.io/895a02a94311bf0bf516';
+const POLL=5000;
 
-function setSyncStatus(status) {
-  const dot = document.getElementById('syncDot');
-  const txt = document.getElementById('syncText');
-  dot.className = 'sync-dot ' + status;
-  txt.textContent = status === 'synced' ? 'All devices synced ✓' :
-                    status === 'syncing' ? 'Syncing...' : 'Offline — retrying...';
-}
+/* Default itinerary content (editable by users) */
+const DEFAULT_ITIN=[
+{day:"Day 1 · Sun, March 1",title:"🚂 Patna → NJP",
+desc:"Board Vande Bharat Express at <strong>13:00</strong> from Patna. 7-hour scenic ride through Bihar & Bengal. <strong>Arrive NJP at ~8:00 PM</strong> same day. Check into hotel near NJP/Siliguri for the night.",
+tags:["🚂 Vande Bharat","🕐 1 PM → 8 PM","🏨 Overnight NJP"],
+tip:"💡 Reach Patna station by 12:15. Carry packed dinner. Keep warm clothes in hand baggage!",
+img:"",diff:""},
 
-async function fetchState() {
-  try {
-    setSyncStatus('syncing');
-    const res = await fetch(API, { headers: { Accept: 'application/json' } });
-    if (!res.ok) throw new Error('fetch failed');
-    const data = await res.json();
-    if (data.updatedAt > lastKnownUpdate) {
-      state = data;
-      lastKnownUpdate = data.updatedAt;
-      renderAll();
-    }
-    setSyncStatus('synced');
-  } catch (e) {
-    setSyncStatus('error');
-  }
-}
+{day:"Day 2 · Mon, March 2",title:"📍 NJP → Gangtok + Tashi Trek",
+desc:"Early morning taxi to Gangtok (~4.5 hrs). Check in, lunch. Afternoon: <strong>🥾 Trek to Tashi Viewpoint</strong> — easy 30-min uphill hike with jaw-dropping Kanchenjunga panorama. Evening stroll at <strong>MG Marg</strong> — momos, thukpa, shopping!",
+tags:["🚐 4.5 hr drive","🥾 Tashi Trek","🌃 MG Marg","🟢 Easy"],
+tip:"",img:"https://images.unsplash.com/photo-1598885276379-809e0d401fa9?w=600&q=75",diff:"easy"},
 
-async function pushState() {
-  if (syncing) return;
-  syncing = true;
-  state.updatedAt = Date.now();
-  lastKnownUpdate = state.updatedAt;
-  try {
-    setSyncStatus('syncing');
-    const res = await fetch(API, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(state)
-    });
-    if (!res.ok) throw new Error('push failed');
-    setSyncStatus('synced');
-  } catch (e) {
-    setSyncStatus('error');
-  } finally {
-    syncing = false;
-  }
-}
+{day:"Day 3 · Tue, March 3",title:"❄️ Tsomgo Lake Trek & Baba Mandir",
+desc:"Full day excursion! <strong>Tsomgo Lake</strong> (12,310 ft) — frozen & magical in March. <strong>🥾 Trek around Tsomgo Lake</strong> (~2 km loop trail, stunning reflections & yak sightings). Visit <strong>Baba Harbhajan Singh Mandir</strong>.",
+tags:["📸 Tsomgo Lake","🥾 Lake Trek (2km)","🛕 Baba Mandir","🟢 Easy"],
+tip:"💡 Nathula closed Mon & Tue. March 3 is Tuesday — so Tsomgo + Baba Mandir + trek day. Apply permits on Day 2. Carry Aadhaar.",
+img:"https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=600&q=75",diff:"easy"},
 
-function startPolling() {
-  fetchState();
-  pollTimer = setInterval(fetchState, POLL_MS);
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { clearInterval(pollTimer); }
-    else { fetchState(); pollTimer = setInterval(fetchState, POLL_MS); }
-  });
-}
+{day:"Day 4 · Wed, March 4",title:"🏔️ Gangtok → Lachung + Waterfall Trek",
+desc:"Breathtaking 5-6 hour drive. Stop at <strong>Naga Waterfall</strong> & <strong>Seven Sisters Waterfall</strong>. <strong>🥾 Short trek to Bhim Nala Waterfall</strong> (~1 km forest trail, beautiful cascade). Cross Chungthang, see Lachen-Lachung river confluence. Overnight in <strong>Lachung village</strong> at 8,610 ft.",
+tags:["🚗 5-6 hrs","🥾 Waterfall Trek (1km)","🏡 Lachung","🟢 Easy"],
+tip:"",img:"",diff:"easy"},
+
+{day:"Day 5 · Thu, March 5",title:"🌸 Yumthang Valley Trek & Zero Point",
+desc:"Early morning drive to <strong>Yumthang Valley</strong> (11,800 ft). <strong>🥾 Trek through the Valley of Flowers</strong> — 3 km walk through snow-covered valley along the Teesta, surrounded by rhododendrons & silver firs. Continue to <strong>Zero Point</strong> (15,300 ft) — pure white snow desert! Return to Gangtok by evening.",
+tags:["🥾 Valley Trek (3km)","❄️ Zero Point","📸 Snow!","🟡 Moderate"],
+tip:"💡 Main trek of the trip! Walk slowly at altitude. Carry gloves, caps, sunscreen, water. Return to Gangtok is 5-6 hrs.",
+img:"https://images.unsplash.com/photo-1640101474726-02c3d68a7a74?w=600&q=75",diff:"moderate"},
+
+{day:"Day 6 · Fri, March 6",title:"🏛️ Hanuman Tok Trek + Gangtok → NJP",
+desc:"Early morning: <strong>🥾 Trek to Hanuman Tok</strong> — 1.5 km uphill through pine forest to one of Gangtok's highest points (7,200 ft). Stunning sunrise Kanchenjunga view! Visit <strong>Rumtek Monastery</strong> (largest in Sikkim). Last shopping at MG Marg. Afternoon drive to NJP (~4.5 hrs), overnight near station.",
+tags:["🥾 Hanuman Tok (1.5km)","🛕 Rumtek","🛍️ Shopping","🟡 Moderate"],
+tip:"",img:"",diff:"moderate"},
+
+{day:"Day 7 · Sat, March 7",title:"🏠 NJP → Patna",
+desc:"Board Vande Bharat at <strong>5:10 AM</strong> from NJP. 7 hours back. Share trip photos, relive the memories. <strong>Arrive Patna ~12:10 PM</strong>. Home sweet home! 🏠",
+tags:["🚂 Vande Bharat","🕐 5:10 AM → 12:10 PM","🏠 Home!"],
+tip:"⚠️ Set multiple alarms! Pack bags night before. Keep breakfast ready. Reach NJP station by 4:30 AM.",
+img:"",diff:""}
+];
+
+/* ===== STATE ===== */
+let state={members:[],expenses:[],budgetOverrides:{},itinerary:{},updatedAt:0};
+let lastUp=0,syncing=false,pollId=null;
+
+function syncSt(s){const d=document.getElementById('syncDot'),t=document.getElementById('syncTxt');d.className='sync-dot '+s;t.textContent=s==='ok'?'All devices synced ✓':s==='ing'?'Syncing...':'Offline — retrying...';}
+
+async function pull(){try{syncSt('ing');const r=await fetch(API);if(!r.ok)throw 0;const d=await r.json();if(d.updatedAt>lastUp){state=d;lastUp=d.updatedAt;renderAll();}syncSt('ok');}catch(e){syncSt('err');}}
+
+async function push(){if(syncing)return;syncing=true;state.updatedAt=Date.now();lastUp=state.updatedAt;
+try{syncSt('ing');const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)});if(!r.ok)throw 0;syncSt('ok');}catch(e){syncSt('err');}finally{syncing=false;}}
+
+function startPoll(){pull();pollId=setInterval(pull,POLL);document.addEventListener('visibilitychange',()=>{if(document.hidden){clearInterval(pollId);}else{pull();pollId=setInterval(pull,POLL);}});}
 
 /* ===== MEMBERS ===== */
-function addMember() {
-  const input = document.getElementById('memberName');
-  const name = input.value.trim();
-  if (!name) return;
-  if (state.members.length >= 15) return toast('Max 15 members!');
-  if (state.members.find(m => m.name.toLowerCase() === name.toLowerCase())) return toast('Already added!');
-  state.members.push({ id: Date.now().toString(), name });
-  input.value = '';
-  pushState();
-  renderAll();
-  toast(`${name} added! 🎉`);
-}
-
-function removeMember(id) {
-  const m = state.members.find(x => x.id === id);
-  if (m && confirm(`Remove ${m.name}?`)) {
-    state.members = state.members.filter(x => x.id !== id);
-    state.expenses = state.expenses.filter(x => x.paidBy !== id);
-    pushState();
-    renderAll();
-  }
-}
-
-function renderMembers() {
-  const el = document.getElementById('membersList');
-  if (!state.members.length) {
-    el.innerHTML = '<div class="empty-state"><div class="emoji">👨‍👩‍👧‍👦</div><div>Add your family members to get started!</div></div>';
-    return;
-  }
-  const colors = ['#1B4332','#2D6A4F','#40916C','#52B788','#74C69D','#F77F00','#E63946','#457B9D'];
-  el.innerHTML = state.members.map((m, i) => `
-    <div class="member">
-      <div class="name">
-        <div class="avatar" style="background:${colors[i % colors.length]}">${m.name.charAt(0).toUpperCase()}</div>
-        ${m.name}
-      </div>
-      <button class="remove" onclick="removeMember('${m.id}')">✕</button>
-    </div>`).join('');
-}
+function addMember(){const i=document.getElementById('memIn'),n=i.value.trim();if(!n)return;if(state.members.length>=15)return toast('Max 15!');if(state.members.find(m=>m.name.toLowerCase()===n.toLowerCase()))return toast('Already added!');state.members.push({id:Date.now().toString(),name:n});i.value='';push();renderAll();toast(n+' added! 🎉');}
+function removeMember(id){const m=state.members.find(x=>x.id===id);if(m&&confirm('Remove '+m.name+'?')){state.members=state.members.filter(x=>x.id!==id);state.expenses=state.expenses.filter(x=>x.paidBy!==id);push();renderAll();}}
+function renderMembers(){const e=document.getElementById('memList');if(!state.members.length){e.innerHTML='<div class="empty"><div class="emo">👨‍👩‍👧‍👦</div><div>Add your family members!</div></div>';return;}
+const c=['#1B4332','#2D6A4F','#40916C','#52B788','#74C69D','#F77F00','#E63946','#457B9D'];
+e.innerHTML=state.members.map((m,i)=>`<div class="mem"><div class="nm"><div class="av" style="background:${c[i%c.length]}">${m.name[0].toUpperCase()}</div>${m.name}</div><button class="rm" onclick="removeMember('${m.id}')">✕</button></div>`).join('');}
 
 /* ===== BUDGET ===== */
-function onBudgetChange() {
-  state.budgetOverrides = {
-    localTaxi: +document.getElementById('budgetLocalTaxi').value || 0,
-    accom: +document.getElementById('budgetAccom').value || 0,
-    food: +document.getElementById('budgetFood').value || 0,
-    permits: +document.getElementById('budgetPermits').value || 0,
-    misc: +document.getElementById('budgetMisc').value || 0,
-  };
-  calcBudget();
-  pushState();
-}
+function onBudget(){state.budgetOverrides={lt:+$('bLT').value||0,ac:+$('bAc').value||0,fd:+$('bFd').value||0,pm:+$('bPm').value||0,ms:+$('bMs').value||0};calcBudget();push();}
+function calcBudget(){const n=state.members.length||8,o=state.budgetOverrides||{};const tg=1500*n,tr=1200*n,lt=o.lt||14000,ac=o.ac||27500,fd=o.fd||19200,pm=o.pm||2500,ms=o.ms||5000;
+const t=tg+tr+8000+lt+ac+fd+pm+ms,pp=Math.ceil(t/n);
+document.querySelectorAll('.mc').forEach(el=>el.textContent=n);
+$('cTG').textContent='₹'+tg.toLocaleString('en-IN');$('cTR').textContent='₹'+tr.toLocaleString('en-IN');
+$('bTotal').textContent='₹'+t.toLocaleString('en-IN');$('bPP').textContent='₹'+pp.toLocaleString('en-IN')+' per person';
+$('statT').textContent='₹'+(t/1000).toFixed(1)+'K';$('statP').textContent='₹'+pp.toLocaleString('en-IN');
+if(o.lt)$('bLT').value=o.lt;if(o.ac)$('bAc').value=o.ac;if(o.fd)$('bFd').value=o.fd;if(o.pm)$('bPm').value=o.pm;if(o.ms)$('bMs').value=o.ms;}
 
-function calcBudget() {
-  const n = state.members.length || 8;
-  const o = state.budgetOverrides || {};
-  const trainGo = 1500 * n, trainRet = 1200 * n;
-  const local = o.localTaxi || 14000, accom = o.accom || 27500;
-  const food = o.food || 19200, permits = o.permits || 2500, misc = o.misc || 5000;
-  const total = trainGo + trainRet + 8000 + local + accom + food + permits + misc;
-  const pp = Math.ceil(total / n);
+/* ===== ITINERARY (editable) ===== */
+function getItin(idx){return(state.itinerary&&state.itinerary[idx])?state.itinerary[idx]:null;}
+function renderItinerary(){
+const el=$('itineraryList');let html='';
+DEFAULT_ITIN.forEach((d,i)=>{
+  const custom=getItin(i);
+  const desc=custom||d.desc;
+  const isEdited=!!custom;
+  html+=`<div class="dc"><div class="dd">${d.day}</div><div class="dt">${d.title}</div>`;
+  html+=`<div class="ddesc" id="iDesc${i}">${desc}</div>`;
+  html+=d.tags.map(t=>`<span class="dtag">${t}</span>`).join('');
+  if(d.tip)html+=`<div class="dhigh">${d.tip}</div>`;
+  if(d.img)html+=`<img class="dphoto" src="${d.img}" alt="" loading="lazy">`;
+  html+=`<button class="edit-btn" onclick="toggleEdit(${i})">✏️ ${isEdited?'Edited — tap to change':'Edit this day'}</button>`;
+  html+=`<textarea class="edit-area" id="iEdit${i}" placeholder="Edit the plan for this day...">${stripHtml(desc)}</textarea>`;
+  html+=`<button class="save-edit" id="iSave${i}" onclick="saveEdit(${i})">💾 Save</button>`;
+  html+=`</div>`;
+});
+el.innerHTML=html;}
 
-  document.querySelectorAll('.m-count').forEach(el => el.textContent = n);
-  document.getElementById('calcTrainGo').textContent = `₹${trainGo.toLocaleString('en-IN')}`;
-  document.getElementById('calcTrainReturn').textContent = `₹${trainRet.toLocaleString('en-IN')}`;
-  document.getElementById('budgetGrandTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
-  document.getElementById('budgetPerPerson').textContent = `₹${pp.toLocaleString('en-IN')} per person`;
-  document.getElementById('statTotal').textContent = `₹${(total/1000).toFixed(1)}K`;
-  document.getElementById('statPP').textContent = `₹${pp.toLocaleString('en-IN')}`;
-
-  // Restore input values from state
-  if (o.localTaxi) document.getElementById('budgetLocalTaxi').value = o.localTaxi;
-  if (o.accom) document.getElementById('budgetAccom').value = o.accom;
-  if (o.food) document.getElementById('budgetFood').value = o.food;
-  if (o.permits) document.getElementById('budgetPermits').value = o.permits;
-  if (o.misc) document.getElementById('budgetMisc').value = o.misc;
-}
+function stripHtml(h){const d=document.createElement('div');d.innerHTML=h;return d.textContent||d.innerText||'';}
+function toggleEdit(i){const a=$('iEdit'+i),s=$('iSave'+i);const show=!a.classList.contains('show');a.classList.toggle('show',show);s.classList.toggle('show',show);if(show)a.focus();}
+function saveEdit(i){const txt=$('iEdit'+i).value.trim();if(!txt)return toast('Cannot be empty!');if(!state.itinerary)state.itinerary={};state.itinerary[i]=txt;push();renderItinerary();toast('Day '+(i+1)+' updated! ✅');}
 
 /* ===== EXPENSES ===== */
-function addExpense() {
-  const desc = document.getElementById('expDesc').value.trim();
-  const amount = parseFloat(document.getElementById('expAmount').value);
-  const category = document.getElementById('expCategory').value;
-  const paidBy = document.getElementById('expPaidBy').value;
-  const date = document.getElementById('expDate').value;
-  if (!desc) return toast('Enter a description');
-  if (!amount || amount <= 0) return toast('Enter valid amount');
-  if (!paidBy) return toast('Select who paid');
-  state.expenses.push({ id: Date.now().toString(), desc, amount, category, paidBy, date });
-  document.getElementById('expDesc').value = '';
-  document.getElementById('expAmount').value = '';
-  pushState();
-  renderExpenses(); renderSummary(); updateSpentStat();
-  toast('Expense added! ✅');
-}
-
-function deleteExpense(id) {
-  state.expenses = state.expenses.filter(x => x.id !== id);
-  pushState();
-  renderExpenses(); renderSummary(); updateSpentStat();
-}
-
-function renderExpenses() {
-  const el = document.getElementById('expensesList');
-  if (!state.expenses.length) {
-    el.innerHTML = '<div class="no-expenses">No expenses yet 🧾<br>Add them during the trip!</div>';
-    return;
-  }
-  const grouped = {};
-  [...state.expenses].sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id).forEach(e => {
-    (grouped[e.date] = grouped[e.date] || []).push(e);
-  });
-  const dayN = {'2026-03-01':'Day 1','2026-03-02':'Day 2','2026-03-03':'Day 3','2026-03-04':'Day 4','2026-03-05':'Day 5','2026-03-06':'Day 6','2026-03-07':'Day 7'};
-  let html = '';
-  for (const d of Object.keys(grouped).sort().reverse()) {
-    const tot = grouped[d].reduce((s,e)=>s+e.amount,0);
-    html += `<div class="expense-day-header">${dayN[d]||d} — ₹${tot.toLocaleString('en-IN')}</div>`;
-    grouped[d].forEach(e => {
-      const m = state.members.find(x=>x.id===e.paidBy);
-      html += `<div class="expense-item"><div class="emoji">${e.category.split(' ')[0]}</div><div class="details"><div class="desc">${e.desc}</div><div class="meta">${e.category} · ${m?m.name:'?'}</div></div><div class="exp-amount">₹${e.amount.toLocaleString('en-IN')}</div><button class="delete" onclick="deleteExpense('${e.id}')">🗑️</button></div>`;
-    });
-  }
-  el.innerHTML = html;
-}
-
-function updatePaidByDropdown() {
-  const sel = document.getElementById('expPaidBy');
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">— Select —</option>' + state.members.map(m => `<option value="${m.id}" ${m.id===cur?'selected':''}>${m.name}</option>`).join('');
-}
+function addExpense(){const d=$('eDesc').value.trim(),a=parseFloat($('eAmt').value),c=$('eCat').value,p=$('ePB').value,dt=$('eDt').value;
+if(!d)return toast('Enter description');if(!a||a<=0)return toast('Enter amount');if(!p)return toast('Select who paid');
+state.expenses.push({id:Date.now().toString(),desc:d,amount:a,category:c,paidBy:p,date:dt});$('eDesc').value='';$('eAmt').value='';push();renderExpenses();renderSummary();updSpent();toast('Expense added! ✅');}
+function delExpense(id){state.expenses=state.expenses.filter(x=>x.id!==id);push();renderExpenses();renderSummary();updSpent();}
+function renderExpenses(){const el=$('expList');if(!state.expenses.length){el.innerHTML='<div class="noe">No expenses yet 🧾<br>Add them during the trip!</div>';return;}
+const g={};[...state.expenses].sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id).forEach(e=>{(g[e.date]=g[e.date]||[]).push(e);});
+const dn={'2026-03-01':'Day 1','2026-03-02':'Day 2','2026-03-03':'Day 3','2026-03-04':'Day 4','2026-03-05':'Day 5','2026-03-06':'Day 6','2026-03-07':'Day 7'};
+let h='';for(const d of Object.keys(g).sort().reverse()){const t=g[d].reduce((s,e)=>s+e.amount,0);h+=`<div class="edh">${dn[d]||d} — ₹${t.toLocaleString('en-IN')}</div>`;
+g[d].forEach(e=>{const m=state.members.find(x=>x.id===e.paidBy);h+=`<div class="ei"><div class="ej">${e.category.split(' ')[0]}</div><div class="ed"><div class="en">${e.desc}</div><div class="em">${e.category} · ${m?m.name:'?'}</div></div><div class="ea">₹${e.amount.toLocaleString('en-IN')}</div><button class="del" onclick="delExpense('${e.id}')">🗑️</button></div>`;});}
+el.innerHTML=h;}
+function updPBDrop(){const s=$('ePB'),c=s.value;s.innerHTML='<option value="">— Select —</option>'+state.members.map(m=>`<option value="${m.id}" ${m.id===c?'selected':''}>${m.name}</option>`).join('');}
+function updSpent(){$('statS').textContent='₹'+state.expenses.reduce((s,e)=>s+e.amount,0).toLocaleString('en-IN');}
 
 /* ===== SUMMARY ===== */
-function renderSummary() {
-  const total = state.expenses.reduce((s,e)=>s+e.amount,0);
-  const n = state.members.length || 1;
-  const pp = total / n;
-  document.getElementById('summaryTotalSpent').textContent = `₹${total.toLocaleString('en-IN')}`;
-
-  const paid = {};
-  state.members.forEach(m => paid[m.id] = { name: m.name, amt: 0 });
-  state.expenses.forEach(e => { if (paid[e.paidBy]) paid[e.paidBy].amt += e.amount; });
-
-  const splitEl = document.getElementById('splitList');
-  if (!state.expenses.length || !state.members.length) {
-    splitEl.innerHTML = '<div class="no-expenses">No data yet</div>';
-  } else {
-    splitEl.innerHTML = Object.values(paid).map(p => {
-      const d = p.amt - pp;
-      const s = d > 0.5 ? `gets back ₹${Math.round(d)}` : d < -0.5 ? `owes ₹${Math.round(Math.abs(d))}` : 'settled ✅';
-      return `<div class="split-item"><div><div class="split-name">${p.name}</div><div class="split-owe">${s}</div></div><div class="split-paid">₹${p.amt.toLocaleString('en-IN')}</div></div>`;
-    }).join('');
-  }
-
-  // Settlements
-  const stl = document.getElementById('settlementsList');
-  if (!state.expenses.length || state.members.length < 2) { stl.innerHTML = '<div class="no-expenses">Add expenses to see settlements</div>'; return; }
-  const bals = Object.entries(paid).map(([id,p])=>({name:p.name,bal:p.amt-pp}));
-  const debtors = bals.filter(b=>b.bal<-0.5).sort((a,b)=>a.bal-b.bal);
-  const creditors = bals.filter(b=>b.bal>0.5).sort((a,b)=>b.bal-a.bal);
-  let res=[], di=0, ci=0, dB=debtors[0]?Math.abs(debtors[0].bal):0, cB=creditors[0]?creditors[0].bal:0;
-  while(di<debtors.length && ci<creditors.length){
-    const a=Math.min(dB,cB);
-    if(a>0.5) res.push({from:debtors[di].name,to:creditors[ci].name,amt:Math.round(a)});
-    dB-=a; cB-=a;
-    if(dB<0.5){di++; dB=debtors[di]?Math.abs(debtors[di].bal):0;}
-    if(cB<0.5){ci++; cB=creditors[ci]?creditors[ci].bal:0;}
-  }
-  stl.innerHTML = res.length ? res.map(s=>`<div class="split-item"><div class="split-name">${s.from} → ${s.to}</div><div class="split-paid">₹${s.amt.toLocaleString('en-IN')}</div></div>`).join('') : '<div class="no-expenses">All settled! 🎉</div>';
-}
-
-function updateSpentStat() {
-  document.getElementById('statSpent').textContent = `₹${state.expenses.reduce((s,e)=>s+e.amount,0).toLocaleString('en-IN')}`;
-}
+function renderSummary(){const tot=state.expenses.reduce((s,e)=>s+e.amount,0),n=state.members.length||1,pp=tot/n;
+$('sumTotal').textContent='₹'+tot.toLocaleString('en-IN');
+const paid={};state.members.forEach(m=>paid[m.id]={name:m.name,amt:0});state.expenses.forEach(e=>{if(paid[e.paidBy])paid[e.paidBy].amt+=e.amount;});
+const sl=$('splitList');if(!state.expenses.length||!state.members.length){sl.innerHTML='<div class="noe">No data yet</div>';}else{
+sl.innerHTML=Object.values(paid).map(p=>{const d=p.amt-pp;const s=d>0.5?`gets back ₹${Math.round(d)}`:d<-0.5?`owes ₹${Math.round(Math.abs(d))}`:'settled ✅';return`<div class="si"><div><div class="sn">${p.name}</div><div class="so">${s}</div></div><div class="sp">₹${p.amt.toLocaleString('en-IN')}</div></div>`;}).join('');}
+const stl=$('settleList');if(!state.expenses.length||state.members.length<2){stl.innerHTML='<div class="noe">Add expenses to see</div>';return;}
+const bals=Object.entries(paid).map(([id,p])=>({name:p.name,bal:p.amt-pp}));
+const drs=bals.filter(b=>b.bal<-0.5).sort((a,b)=>a.bal-b.bal),crs=bals.filter(b=>b.bal>0.5).sort((a,b)=>b.bal-a.bal);
+let res=[],di=0,ci=0,dB=drs[0]?Math.abs(drs[0].bal):0,cB=crs[0]?crs[0].bal:0;
+while(di<drs.length&&ci<crs.length){const a=Math.min(dB,cB);if(a>0.5)res.push({f:drs[di].name,t:crs[ci].name,a:Math.round(a)});dB-=a;cB-=a;if(dB<0.5){di++;dB=drs[di]?Math.abs(drs[di].bal):0;}if(cB<0.5){ci++;cB=crs[ci]?crs[ci].bal:0;}}
+stl.innerHTML=res.length?res.map(s=>`<div class="si"><div class="sn">${s.f} → ${s.t}</div><div class="sp">₹${s.a.toLocaleString('en-IN')}</div></div>`).join(''):'<div class="noe">All settled! 🎉</div>';}
 
 /* ===== SHARE ===== */
-function shareTrip() {
-  const n = state.members.length || 8;
-  const spent = state.expenses.reduce((s,e)=>s+e.amount,0);
-  let t = `🏔️ *Sikkim Family Trip 2026*\n📅 March 1-7 | 👥 ${n} members\n👨‍👩‍👧‍👦 ${state.members.map(m=>m.name).join(', ')||'TBD'}\n\n`;
-  t += `💰 *Budget:* ${document.getElementById('budgetGrandTotal').textContent}\n👤 *Per Person:* ${document.getElementById('budgetPerPerson').textContent}\n🧾 *Spent:* ₹${spent.toLocaleString('en-IN')}\n\n`;
-  t += `🗓️ *Plan:*\nDay 1: 🚂 Patna → NJP (1PM-8PM)\nDay 2: 📍 Gangtok + 🥾Tashi Trek\nDay 3: ❄️ Tsomgo Lake + 🥾Lake Trek\nDay 4: 🏔️ Lachung + 🥾Waterfall Trek\nDay 5: 🌸 🥾Yumthang Valley Trek + Zero Point\nDay 6: 🥾Hanuman Tok Trek + Rumtek → NJP\nDay 7: 🏠 NJP → Patna (5:10AM-12:10PM)\n\n`;
-  t += `🔗 ${location.href}`;
-  if (navigator.share) navigator.share({title:'Sikkim Trip 2026',text:t});
-  else navigator.clipboard.writeText(t).then(()=>toast('Copied! 📋'));
-}
-
-function shareBudget() {
-  const n = state.members.length || 8;
-  const o = state.budgetOverrides || {};
-  let t = `💰 *Sikkim Trip Budget*\n\n🚂 Train: ₹${(2700*n).toLocaleString('en-IN')}\n🚐 Taxis: ₹${(8000+(o.localTaxi||14000)).toLocaleString('en-IN')}\n🏨 Stay: ₹${(o.accom||27500).toLocaleString('en-IN')}\n🍽️ Food: ₹${(o.food||19200).toLocaleString('en-IN')}\n🎫 Permits: ₹${(o.permits||2500).toLocaleString('en-IN')}\n🎒 Misc: ₹${(o.misc||5000).toLocaleString('en-IN')}\n\n`;
-  t += `*Total: ${document.getElementById('budgetGrandTotal').textContent}*\n*Per Person: ${document.getElementById('budgetPerPerson').textContent}*\n👥 ${n} members`;
-  window.open(`https://wa.me/?text=${encodeURIComponent(t)}`,'_blank');
-}
+function shareTrip(){const n=state.members.length||8,sp=state.expenses.reduce((s,e)=>s+e.amount,0);
+let t=`🏔️ *Sikkim Family Trip 2026*\n📅 March 1-7 | 👥 ${n} members\n👨‍👩‍👧‍👦 ${state.members.map(m=>m.name).join(', ')||'TBD'}\n\n💰 *Budget:* ${$('bTotal').textContent}\n👤 *Per Person:* ${$('bPP').textContent}\n🧾 *Spent:* ₹${sp.toLocaleString('en-IN')}\n\n`;
+t+=`🗓️ *Plan:*\nDay 1: 🚂 Patna→NJP (1PM-8PM)\nDay 2: 📍 Gangtok+🥾Tashi Trek\nDay 3: ❄️ Tsomgo+🥾Lake Trek\nDay 4: 🏔️ Lachung+🥾Waterfall Trek\nDay 5: 🌸 🥾Yumthang Valley+Zero Point\nDay 6: 🥾Hanuman Tok+Rumtek→NJP\nDay 7: 🏠 NJP→Patna (5:10AM)\n\n🔗 ${location.href}`;
+if(navigator.share)navigator.share({title:'Sikkim Trip 2026',text:t});else navigator.clipboard.writeText(t).then(()=>toast('Copied! 📋'));}
+function shareBudget(){const n=state.members.length||8,o=state.budgetOverrides||{};
+let t=`💰 *Sikkim Trip Budget*\n\n🚂 Train: ₹${(2700*n).toLocaleString('en-IN')}\n🚐 Taxis: ₹${(8000+(o.lt||14000)).toLocaleString('en-IN')}\n🏨 Stay: ₹${(o.ac||27500).toLocaleString('en-IN')}\n🍽️ Food: ₹${(o.fd||19200).toLocaleString('en-IN')}\n🎫 Permits: ₹${(o.pm||2500).toLocaleString('en-IN')}\n🎒 Misc: ₹${(o.ms||5000).toLocaleString('en-IN')}\n\n*Total: ${$('bTotal').textContent}*\n*Per Person: ${$('bPP').textContent}*\n👥 ${n} members`;
+window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');}
 
 /* ===== TABS ===== */
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', function() {
-    const name = this.dataset.tab;
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(`sec-${name}`).classList.add('active');
-    this.classList.add('active');
-    // Hide about section when navigating to other tabs
-    document.getElementById('aboutSection').style.display = name === 'members' ? '' : 'none';
-  });
-});
+document.querySelectorAll('.tab').forEach(tab=>{tab.addEventListener('click',function(){const nm=this.dataset.tab;document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));$('sec-'+nm).classList.add('active');this.classList.add('active');$('aboutSection').style.display=nm==='members'?'':'none';});});
+document.getElementById('memIn').addEventListener('keydown',e=>{if(e.key==='Enter')addMember();});
 
-document.getElementById('memberName').addEventListener('keydown', e => { if(e.key==='Enter') addMember(); });
+/* ===== UTIL ===== */
+function $(id){return document.getElementById(id);}
+function toast(m){const e=$('toast');e.textContent=m;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
+function renderAll(){renderMembers();updPBDrop();calcBudget();renderItinerary();renderExpenses();renderSummary();updSpent();
+$('statM').textContent=state.members.length;$('hlMem').textContent=(state.members.length||8)+' People';
+const td=new Date().toISOString().split('T')[0],d=$('eDt');if(td>='2026-03-01'&&td<='2026-03-07')d.value=td;}
 
-/* ===== TOAST ===== */
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 2500);
-}
-
-/* ===== RENDER ===== */
-function renderAll() {
-  renderMembers();
-  updatePaidByDropdown();
-  calcBudget();
-  renderExpenses();
-  renderSummary();
-  updateSpentStat();
-  document.getElementById('statMembers').textContent = state.members.length;
-  document.getElementById('hlMembers').textContent = `${state.members.length || 8} People`;
-  const today = new Date().toISOString().split('T')[0];
-  const d = document.getElementById('expDate');
-  if (today >= '2026-03-01' && today <= '2026-03-07') d.value = today;
-}
-
-/* ===== INIT ===== */
-startPolling();
+startPoll();
 </script>
 </body>
 </html>
