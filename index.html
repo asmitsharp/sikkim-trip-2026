@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1B4332">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
 <title>🏔️ Sikkim Family Trip 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -14,11 +18,11 @@
   --shadow:0 2px 12px rgba(0,0,0,0.08);--shadow-lg:0 8px 30px rgba(0,0,0,0.12);
   --radius:14px;--radius-sm:10px;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
-.container{max-width:480px;margin:0 auto;padding:0 16px 100px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+.container{max-width:480px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-inset-bottom))}
 
 /* Hero */
-.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 50%,var(--primary-lighter) 100%);color:#fff;padding:40px 20px 30px;text-align:center;position:relative;overflow:hidden}
+.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 50%,var(--primary-lighter) 100%);color:#fff;padding:calc(40px + env(safe-area-inset-top)) 20px 30px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'🏔️';font-size:80px;position:absolute;top:-10px;right:-10px;opacity:0.15}
 .hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:30px;background:var(--bg);border-radius:50% 50% 0 0}
 .hero h1{font-size:1.6rem;font-weight:800;margin-bottom:4px;letter-spacing:-0.5px}
@@ -34,8 +38,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Tabs */
 .tabs{display:flex;gap:4px;margin:0 0 16px;background:var(--card);border-radius:var(--radius-sm);padding:4px;box-shadow:var(--shadow);position:sticky;top:0;z-index:10}
-.tab{flex:1;padding:10px 4px;border:none;background:transparent;font-size:0.72rem;font-weight:600;color:var(--text-muted);border-radius:var(--radius-sm);cursor:pointer;transition:all 0.2s;text-align:center}
-.tab.active{background:var(--primary);color:#fff}
+.tab{flex:1;padding:12px 4px;border:none;background:transparent;font-size:0.72rem;font-weight:600;color:var(--text-muted);border-radius:var(--radius-sm);cursor:pointer;transition:all 0.2s;text-align:center;min-height:44px;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.tab.active{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(27,67,50,0.3)}
 .tab:hover:not(.active){background:var(--bg)}
 
 /* Sections */
@@ -48,9 +52,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Members */
 .member-input{display:flex;gap:8px;margin-bottom:14px}
-.member-input input{flex:1;padding:12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:0.9rem;outline:none;transition:border 0.2s}
+.member-input input{flex:1;padding:14px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:16px;outline:none;transition:border 0.2s;-webkit-appearance:none}
 .member-input input:focus{border-color:var(--primary)}
-.member-input button{padding:12px 18px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:600;cursor:pointer}
+.member-input button{padding:14px 20px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);font-size:16px;font-weight:600;cursor:pointer;min-height:48px;-webkit-tap-highlight-color:transparent}
 .member{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px}
 .member .name{font-weight:600;display:flex;align-items:center;gap:8px}
 .member .avatar{width:32px;height:32px;border-radius:50%;background:var(--primary-lighter);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700}
@@ -65,7 +69,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .budget-row .item{font-size:0.85rem;color:var(--text);flex:1}
 .budget-row .item small{display:block;color:var(--text-muted);font-size:0.7rem}
 .budget-row .amount{font-weight:700;color:var(--primary);font-size:0.9rem;text-align:right;min-width:80px}
-.budget-row input{width:90px;padding:6px 10px;border:2px solid var(--border);border-radius:8px;font-size:0.85rem;text-align:right;font-weight:600;outline:none}
+.budget-row input{width:100px;padding:10px 10px;border:2px solid var(--border);border-radius:8px;font-size:16px;text-align:right;font-weight:600;outline:none;-webkit-appearance:none;min-height:44px}
 .budget-row input:focus{border-color:var(--primary)}
 .budget-total{display:flex;justify-content:space-between;padding:14px 16px;background:var(--primary);color:#fff;border-radius:var(--radius-sm);margin-top:12px;font-weight:700;font-size:1rem}
 .budget-pp{text-align:center;padding:10px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);margin-top:8px;font-weight:700}
@@ -83,7 +87,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .expense-form{margin-bottom:16px}
 .form-row{margin-bottom:10px}
 .form-row label{display:block;font-size:0.75rem;font-weight:600;color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.3px}
-.form-row input,.form-row select{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:0.9rem;outline:none;background:#fff;transition:border 0.2s}
+.form-row input,.form-row select{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:16px;outline:none;background:#fff;transition:border 0.2s;-webkit-appearance:none;min-height:48px}
+.form-row select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 12px center #fff;padding-right:32px}
 .form-row input:focus,.form-row select:focus{border-color:var(--primary)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .btn-add{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform 0.1s}
@@ -121,8 +126,41 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--primary);color:#fff;padding:12px 24px;border-radius:30px;font-size:0.85rem;font-weight:600;box-shadow:var(--shadow-lg);transition:transform 0.3s ease;z-index:100;white-space:nowrap}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-/* Responsive */
-@media(min-width:500px){.container{padding:0 24px 100px}.hero{padding:50px 30px 40px}.hero h1{font-size:2rem}}
+/* Responsive - small phones */
+@media(max-width:360px){
+  .hero h1{font-size:1.35rem}
+  .hero .subtitle{font-size:0.85rem}
+  .stats{grid-template-columns:1fr 1fr;gap:8px;margin:-20px 12px 16px}
+  .stat-card{padding:10px}
+  .stat-card .num{font-size:1.1rem}
+  .stat-card .label{font-size:0.6rem}
+  .tab{font-size:0.65rem;padding:10px 2px}
+  .budget-row{flex-wrap:wrap;gap:6px}
+  .budget-row .item{min-width:100%}
+  .budget-row .amount,.budget-row input{margin-left:auto}
+  .form-grid{grid-template-columns:1fr}
+  .day-tag{font-size:0.65rem;padding:2px 8px}
+  .expense-item{flex-wrap:wrap;gap:8px}
+}
+
+/* Responsive - medium+ */
+@media(min-width:500px){
+  .container{padding:0 24px 100px}
+  .hero{padding:50px 30px 40px}
+  .hero h1{font-size:2rem}
+}
+
+/* Touch feedback */
+button,a,.tab,.member,.expense-item{-webkit-tap-highlight-color:transparent}
+button:active,.tab:active{transform:scale(0.97)}
+.btn-add:active{transform:scale(0.98)}
+.share-btn:active{transform:scale(0.98)}
+
+/* Prevent text selection on interactive elements */
+.tab,.member .remove,.delete{-webkit-user-select:none;user-select:none}
+
+/* Smooth scrolling */
+html{scroll-behavior:smooth}
 
 /* Empty state */
 .empty-state{text-align:center;padding:40px 20px;color:var(--text-muted)}
@@ -136,7 +174,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <h1>Sikkim Family Trip 🏔️</h1>
   <p class="subtitle">Mountains are calling & we must go!</p>
   <div class="dates">📅 March 1 — 7, 2026</div>
-  <p class="route">Varanasi → NJP → Gangtok → Lachung → Yumthang → Varanasi</p>
+  <p class="route">Patna → NJP → Gangtok → Lachung → Yumthang → Patna</p>
 </div>
 
 <!-- Stats -->
@@ -174,11 +212,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="budget-group">
         <div class="budget-group-title">🚂 Transport</div>
         <div class="budget-row">
-          <div class="item">Vande Bharat: Varanasi → NJP<small>₹1,500 × <span class="m-count">8</span> people</small></div>
+          <div class="item">Vande Bharat: Patna → NJP<small>₹1,500 × <span class="m-count">8</span> people</small></div>
           <div class="amount" data-calc="transport-go"></div>
         </div>
         <div class="budget-row">
-          <div class="item">Vande Bharat: NJP → Varanasi<small>₹1,200 × <span class="m-count">8</span> people</small></div>
+          <div class="item">Vande Bharat: NJP → Patna<small>₹1,200 × <span class="m-count">8</span> people</small></div>
           <div class="amount" data-calc="transport-return"></div>
         </div>
         <div class="budget-row">
@@ -241,8 +279,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
     <div class="day-card">
       <div class="day-date">Day 1 · Sun, March 1</div>
-      <div class="day-title">🚂 Varanasi → NJP</div>
-      <div class="day-desc">Board Vande Bharat Express at <strong>13:00</strong> from Varanasi. Settle in and enjoy the scenic journey through Bihar and Bengal. Carry packed meals for dinner.</div>
+      <div class="day-title">🚂 Patna → NJP</div>
+      <div class="day-desc">Board Vande Bharat Express at <strong>13:00</strong> from Patna. Settle in and enjoy the scenic journey through Bihar and Bengal. Carry packed meals for dinner.</div>
       <div class="day-tag">🚂 Vande Bharat</div><div class="day-tag">🕐 Departs 1 PM</div>
       <div class="day-highlight">💡 <strong>Tip:</strong> Reach station by 12:15. Keep warm clothes accessible — it gets cold as you head east.</div>
     </div>
@@ -286,8 +324,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
     <div class="day-card">
       <div class="day-date">Day 7 · Sat, March 7</div>
-      <div class="day-title">🏠 NJP → Varanasi</div>
-      <div class="day-desc">Early morning! Board Vande Bharat at <strong>5:10 AM</strong> from NJP. Relax, share photos, relive memories on the way home. Arrive Varanasi by afternoon.</div>
+      <div class="day-title">🏠 NJP → Patna</div>
+      <div class="day-desc">Early morning! Board Vande Bharat at <strong>5:10 AM</strong> from NJP. Relax, share photos, relive memories on the way home. Arrive Patna by afternoon.</div>
       <div class="day-tag">🚂 Vande Bharat</div><div class="day-tag">🕐 5:10 AM</div><div class="day-tag">🏠 Home!</div>
       <div class="day-highlight">💡 <strong>Tip:</strong> Set multiple alarms! Pack bags the night before. Keep breakfast ready.</div>
     </div>
@@ -623,13 +661,13 @@ function shareTrip() {
   text += `👤 *Per Person:* ${document.getElementById('budgetPerPerson').textContent}\n`;
   text += `🧾 *Spent So Far:* ₹${totalSpent.toLocaleString('en-IN')}\n\n`;
   text += `🗓️ *Itinerary:*\n`;
-  text += `Day 1: 🚂 Varanasi → NJP (Vande Bharat 1 PM)\n`;
+  text += `Day 1: 🚂 Patna → NJP (Vande Bharat 1 PM)\n`;
   text += `Day 2: 📍 NJP → Gangtok, MG Marg\n`;
   text += `Day 3: ❄️ Tsomgo Lake + Nathula Pass\n`;
   text += `Day 4: 🏔️ Gangtok → Lachung\n`;
   text += `Day 5: 🌸 Yumthang Valley + Zero Point\n`;
   text += `Day 6: 🏛️ Gangtok sightseeing → NJP\n`;
-  text += `Day 7: 🏠 NJP → Varanasi (5:10 AM)\n\n`;
+  text += `Day 7: 🏠 NJP → Patna (5:10 AM)\n\n`;
   text += `🔗 Track expenses: ${window.location.href}`;
 
   if (navigator.share) {
